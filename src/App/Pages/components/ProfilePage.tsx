@@ -98,7 +98,12 @@ const ProfilePage = ({ getCurrUser }: Props) => {
                 </div>
 
                 <div className={styles.followsContainer}>
-                  <div className={cx(styles.numOrders, 'btn btn-outline-dark')}>
+                  <div
+                    className={cx(
+                      styles.numOrders,
+                      'btn btn-outline-secondary-dark'
+                    )}
+                  >
                     {pageData.numOrders === 0 ? (
                       'No'
                     ) : (

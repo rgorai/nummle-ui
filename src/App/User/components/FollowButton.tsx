@@ -21,6 +21,7 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
   const { userFollowings } = useAppSelector(selectSessionData)
   const dispatch = useAppDispatch()
   const [error, setError] = useState(false)
+  const [followLoading, setFollowLoading] = useState(false)
 
   const isCurrUser = authInfo.authenticated && authInfo.userId === followUserId
   const currUserFollowingList = authInfo.authenticated
@@ -32,6 +33,7 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
 
   const followUser = useCallback(
     (operation: 'follow' | 'unfollow', userId: string, otherUserId: string) => {
+      setFollowLoading(true)
       followUnfollowUser(operation, otherUserId)
         .then(({ data }) => {
           dispatch(updateFollow([operation, ...data]))
@@ -41,6 +43,7 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
           setError(true)
           console.error('error', response)
         })
+        .then(() => setFollowLoading(false))
     },
     [dispatch]
   )
@@ -71,7 +74,7 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
         className={styles.button}
         onClick={submitFollowUser}
         variant={displayFollowing ? 'secondary' : 'primary'}
-        disabled={!currUserFollowingList}
+        disabled={!currUserFollowingList || followLoading}
       >
         {currUserFollowingList ? (
           displayFollowing ? (

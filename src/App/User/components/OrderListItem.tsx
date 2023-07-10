@@ -86,7 +86,7 @@ const OrderListItem = ({
         </div>
 
         <Stack className={styles.buttonContainer} gap={2}>
-          <Button size="lg">{isCurrUser ? 'Reorder' : 'Recreate Order'}</Button>
+          <Button size="lg">{isCurrUser ? 'Reorder' : 'Clone Order'}</Button>
           <Button
             href={`/restaurants/${orderDetails.restaurant.id}`}
             size="lg"
