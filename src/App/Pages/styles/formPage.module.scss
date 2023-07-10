@@ -1,0 +1,27 @@
+.formContainer {
+  margin: 10vh auto;
+  width: 23rem;
+  padding: 2em;
+  border-radius: 0.375rem;
+  border: 1px solid var(--bs-border-color-translucent);
+  box-sizing: content-box;
+
+  h1 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 0.75em;
+  }
+
+  .field-error {
+    color: #ce1a1a;
+    font-size: 0.8em;
+    margin-left: 0.1em;
+  }
+}
+
+.formError {
+  color: #7f1616;
+  background-color: #f0bcbc;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+}

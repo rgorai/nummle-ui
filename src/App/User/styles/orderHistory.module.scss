@@ -1,0 +1,7 @@
+@use '../../../mixins' as *;
+
+.historyContainer {
+  :global .list-group-item {
+    padding-left: 0;
+  }
+}

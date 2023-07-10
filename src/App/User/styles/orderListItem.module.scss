@@ -1,0 +1,45 @@
+@use '../../../mixins' as *;
+
+.orderItemContainer {
+  @include flex-display(row, flex-start, flex-start);
+
+  padding: 1em 0;
+  gap: 3vw;
+
+  .imageContainer {
+    width: 16vw;
+    height: 20vh;
+
+    .orderImage {
+      object-fit: cover;
+    }
+  }
+
+  .infoContainer {
+    flex-grow: 1;
+    margin-top: 0.25em;
+
+    .itemListContainer {
+      margin-top: 1.5em;
+
+      :global .row {
+        margin-bottom: 2em;
+        align-items: center;
+        row-gap: 1em;
+      }
+
+      .quantity {
+        width: fit-content;
+        min-width: 1.75em;
+        border: var(--bs-border);
+        padding: 0.05em 0.4em;
+        text-align: center;
+      }
+    }
+  }
+
+  .buttonContainer {
+    max-width: 15em;
+    margin-left: 2em;
+  }
+}

@@ -1,0 +1,9 @@
+@use '../../../mixins' as *;
+
+.detailsContainer {
+  @include flex-display(column, flex-start, flex-start);
+
+  .restaurantImage {
+    height: 30vh;
+  }
+}

@@ -1,0 +1,54 @@
+@use '../../../mixins' as *;
+
+.reactionsWrapper {
+  @include flex-display(row);
+
+  gap: 1em;
+
+  .alertIcon {
+    flex-shrink: 0;
+    width: 32px;
+    color: var(--warning-dark);
+  }
+
+  .icon {
+    display: inline;
+    width: 2em;
+    cursor: pointer;
+    transition: scale 0.1s ease-in-out;
+  }
+}
+
+.noReactionTooltip {
+  @include tooltip-color(var(--warning), black);
+}
+
+.reactionsContainer {
+  @include flex-display(row);
+
+  width: fit-content;
+  gap: 0.5em;
+  background-color: var(--layer-01);
+  padding: 0 0.5em;
+  border-radius: 100em;
+
+  &.noReaction {
+    outline: 2px solid var(--warning);
+    background-color: transparent;
+  }
+
+  $reacted-scale: 1.2;
+
+  .iconContainer {
+    width: fit-content;
+    padding: 0.5em;
+    background-color: transparent;
+    border-radius: 50% !important;
+    border: 0;
+    transition: scale 0.1s ease-in-out;
+
+    &.active {
+      background-color: var(--success);
+    }
+  }
+}

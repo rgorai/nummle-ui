@@ -1,0 +1,48 @@
+@use '../../../mixins' as *;
+
+@mixin text-overflow {
+  max-width: 11em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.itemContainer {
+  @include flex-display(row);
+
+  width: 100%;
+  gap: 1.5em;
+  padding: 0.5em 0;
+
+  .linkContainer {
+    @include flex-display(row);
+
+    flex-grow: 1;
+    gap: 1em;
+    text-decoration: none;
+    color: initial;
+
+    &:hover .username {
+      text-decoration: underline;
+    }
+  }
+
+  .profileImg {
+    width: 3em;
+    border-radius: 50%;
+  }
+
+  .username {
+    @include text-overflow;
+
+    font-weight: 500;
+  }
+
+  .fullName {
+    @include text-overflow;
+  }
+
+  .followButtonWrapper {
+    margin-left: auto;
+  }
+}

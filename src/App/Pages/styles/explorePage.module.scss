@@ -1,0 +1,33 @@
+@use '../../../mixins' as *;
+
+.exploreContainer {
+  .formContainer {
+    padding: 3em 15vw;
+
+    .searchForm {
+      @include flex-display(row);
+
+      gap: 0.5em;
+    }
+  }
+
+  .resultsContainer {
+    padding: 0 3em 5em;
+
+    h1 {
+      margin-bottom: 1em;
+    }
+  }
+
+  .cardListContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 2em;
+    width: 100%;
+
+    .restaurantCardWrapper {
+      width: 100%;
+    }
+  }
+}

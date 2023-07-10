@@ -1,0 +1,78 @@
+{
+  "name": "decision-time-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prepare": "husky install && chmod ug+x .husky/*",
+    "pre-commit": "lint-staged --quiet"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.2.3",
+    "classnames": "^2.3.2",
+    "cross-env": "^7.0.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
+    "sass": "^1.58.0",
+    "typescript": "^5.1.6",
+    "web-vitals": "^2.1.0"
+  },
+  "devDependencies": {
+    "@rgorai/eslint-config": "^1.1.2",
+    "@types/node": "^18.14.6",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^5.0.0-alpha.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
+    "stylelint": "^15.10.1",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-prettier": "^4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@rgorai/eslint-config/.eslintrc"
+  },
+  "prettier": "@rgorai/eslint-config/.prettierrc.js",
+  "stylelint": {
+    "extends": "@rgorai/eslint-config/.stylelintrc"
+  },
+  "lint-staged": {
+    "*": "yarn lint"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:5002"
+}

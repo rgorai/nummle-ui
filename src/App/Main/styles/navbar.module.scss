@@ -1,0 +1,46 @@
+@use '../../../mixins' as *;
+
+.navWrapper {
+  @include flex-display(row, space-between);
+
+  height: var(--nav-height);
+  // border-bottom: var(--border-01);
+  padding: 0 2em;
+  background-color: var(--color-primary-main);
+
+  .logoWrapper {
+    margin-right: 2em;
+    color: unset;
+    text-decoration: none;
+  }
+
+  .desktopNavContainer {
+    @include flex-display(row);
+
+    width: fit-content;
+    height: 100%;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        float: left;
+      }
+    }
+
+    .navLink {
+      margin-left: 1em;
+
+      a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

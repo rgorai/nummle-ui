@@ -1,0 +1,17 @@
+.modalContainer {
+  // margin-top: 25vh;
+
+  :global .modal-dialog {
+    max-width: 25em;
+
+    :global .modal-body {
+      padding: 0;
+    }
+  }
+
+  .listContainer {
+    max-height: 45vh;
+    overflow-y: auto;
+    border-radius: 0 0 calc(0.5rem - 1px) calc(0.5rem - 1px);
+  }
+}

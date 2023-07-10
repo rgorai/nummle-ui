@@ -1,0 +1,25 @@
+.cardWrapper {
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.cardContainer {
+  text-decoration: none;
+
+  .restaurantImage {
+    height: 10em;
+    object-fit: cover;
+  }
+
+  .infoContainer {
+    background-color: #f2f2f2;
+    padding: 1em;
+  }
+
+  .restaurantName {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+  }
+}

@@ -1,0 +1,9 @@
+@use '../../../mixins' as *;
+
+.formContainer {
+  @include flex-display(column, flex-start, flex-start);
+
+  .selectContainer {
+    width: 300px;
+  }
+}

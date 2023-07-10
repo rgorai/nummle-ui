@@ -1,0 +1,38 @@
+@use '../../../mixins' as *;
+
+.feedContainer {
+  @include grid-display(1fr 1fr 1fr);
+
+  padding: 3em 10vw;
+  gap: 3em;
+
+  .feedItemContainer {
+    height: 30em;
+
+    .postHeading {
+      padding: 1em 1.5em;
+      border-bottom: var(--bs-border);
+    }
+
+    .restaurantImage {
+      height: 12em;
+      object-fit: cover;
+    }
+
+    .itemsContainer {
+      @include flex-display(column, flex-start, flex-start);
+
+      // height: 100%;
+      // margin-top: 1em;
+      gap: 1em;
+      padding: 2em;
+      overflow-y: auto;
+    }
+
+    .itemWrapper {
+      @include flex-display(row, space-between);
+
+      width: 100%;
+    }
+  }
+}

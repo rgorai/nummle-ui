@@ -1,0 +1,70 @@
+@use '../../../mixins' as *;
+
+.pageContainer {
+  h2 {
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .bioContainer {
+    @include flex-display(row);
+
+    padding: 2em 3em;
+    gap: 4em;
+
+    .profileImg {
+      width: 15em;
+      border-radius: 50%;
+    }
+
+    .toolBar {
+      @include flex-display(row, space-between);
+
+      width: 100%;
+    }
+
+    .usernameContainer {
+      @include flex-display(row);
+
+      gap: 2em;
+
+      .username {
+        font-weight: 800;
+        margin: 0;
+      }
+    }
+
+    .followsContainer {
+      @include flex-display(row);
+
+      gap: 1em;
+
+      .numOrders {
+        pointer-events: none;
+      }
+    }
+
+    .infoContainer {
+      @include flex-display(column, flex-start, flex-start);
+
+      gap: 2em;
+      margin-left: auto;
+      margin-right: 7vw;
+
+      .userFullname {
+        font-weight: 600;
+        font-size: 1.5em;
+        margin-bottom: 0.25em;
+      }
+    }
+  }
+
+  .ordersContainer {
+    padding: 2em 3em 4em;
+    width: 100%;
+  }
+}

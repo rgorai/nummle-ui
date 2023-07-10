@@ -1,0 +1,27 @@
+@mixin flex-display(
+  $direction,
+  $justification: flex-start,
+  $alignment: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justification;
+  align-items: $alignment;
+}
+
+@mixin grid-display($template, $alignment: center) {
+  display: grid;
+  grid-template-columns: $template;
+  align-items: $alignment;
+}
+
+@mixin tooltip-color($color, $text-color) {
+  :global .tooltip-arrow::before {
+    border-right-color: $color;
+  }
+
+  :global .tooltip-inner {
+    background-color: $color;
+    color: $text-color;
+  }
+}
