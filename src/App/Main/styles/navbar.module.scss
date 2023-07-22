@@ -3,10 +3,13 @@
 .navWrapper {
   @include flex-display(row, space-between);
 
+  position: sticky;
+  top: 0;
   height: var(--nav-height);
   // border-bottom: var(--border-01);
   padding: 0 2em;
   background-color: var(--color-primary-main);
+  z-index: 100;
 
   .logoWrapper {
     margin-right: 2em;

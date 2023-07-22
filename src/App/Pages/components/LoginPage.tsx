@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-// import { isValidPassword, isValidUserName } from '../../utils/errors'
 import cx from 'classnames'
 import Spinner from 'react-bootstrap/esm/Spinner'
 import { login } from '../../../services/authService'
@@ -13,12 +12,12 @@ import { useAuthInfo } from '../../../state/authContext'
 
 const LOGIN_SPECS: LoginFormSpecs = {
   username: {
-    label: 'Username',
+    label: 'Username or email',
     type: 'text',
     defaultValue: '',
     validation: () => {},
     required: true,
-    props: { placeholder: 'Enter username' },
+    props: { placeholder: 'Enter username or email' },
   },
   password: {
     label: 'Password',

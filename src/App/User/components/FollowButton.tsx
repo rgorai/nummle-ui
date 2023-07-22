@@ -23,9 +23,9 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
   const [error, setError] = useState(false)
   const [followLoading, setFollowLoading] = useState(false)
 
-  const isCurrUser = authInfo.authenticated && authInfo.userId === followUserId
+  const isCurrUser = authInfo.authenticated && authInfo.user_id === followUserId
   const currUserFollowingList = authInfo.authenticated
-    ? userFollowings[authInfo.userId]
+    ? userFollowings[authInfo.user_id]
     : null
   const displayFollowing = !!currUserFollowingList?.find(
     (e) => e.userId === followUserId
@@ -52,7 +52,7 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
     if (authInfo.authenticated)
       followUser(
         displayFollowing ? 'unfollow' : 'follow',
-        authInfo.userId,
+        authInfo.user_id,
         followUserId
       )
   }

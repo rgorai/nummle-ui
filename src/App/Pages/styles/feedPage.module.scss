@@ -3,7 +3,7 @@
 .feedContainer {
   @include grid-display(1fr 1fr 1fr);
 
-  padding: 3em 10vw;
+  padding: 3em 4em;
   gap: 3em;
 
   .feedItemContainer {

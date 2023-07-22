@@ -28,7 +28,7 @@ const OrderHistory = ({ userId }: Props) => {
   const [pageError, setPageError] = useState<ServerError | null>(null)
 
   const currOrder = orderHistories[userId] ?? null
-  const isCurrUser = authInfo.authenticated && authInfo.userId === userId
+  const isCurrUser = authInfo.authenticated && authInfo.user_id === userId
 
   const getOrderHistory = useCallback(
     (currUser: boolean) => {

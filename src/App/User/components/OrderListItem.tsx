@@ -25,7 +25,7 @@ const OrderListItem = ({
   orderDetails,
 }: Props<true> | Props<false>) => {
   const { authInfo } = useAuthInfo()
-  const isCurrUser = authInfo.authenticated && authInfo.userId === userId
+  const isCurrUser = authInfo.authenticated && authInfo.user_id === userId
   return (
     <ListGroupItem>
       <div className={styles.orderItemContainer}>
@@ -72,11 +72,13 @@ const OrderListItem = ({
                       userId={userId}
                       orderId={orderDetails._id}
                       itemId={k}
+                      tense="present"
                     />
                   ) : (
                     <ReactionBox
                       showCurrOnly={!isCurrUser}
-                      reaction={v.reaction}
+                      reactionRank={v.reaction?.rank ?? null}
+                      tense="past"
                     />
                   )}
                 </Col>

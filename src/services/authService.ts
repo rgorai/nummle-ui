@@ -11,7 +11,7 @@ export const login = async (loginData: LoginSpecs) => {
   return await axios
     .post<AuthResponse>('/api/auth/login', loginData)
     .then(({ data }) => {
-      if (data.authenticated && data.access_token && data.userId) {
+      if (data.authenticated && data.access_token && data.user_id) {
         localStorage.setItem('authInfo', JSON.stringify(data))
         return data
       } else throw 'Invalid auth response'
@@ -29,13 +29,11 @@ export const getAuthInfo = (): AuthResponse =>
   )
 
 export const authHeader = () => {
-  const { access_token, userId }: any = getAuthInfo()
-  if (access_token) return { access_token, user_id: userId }
+  const { access_token, user_id }: any = getAuthInfo()
+  if (access_token) return { access_token, user_id }
 }
 
-type AuthProps =
-  | [userId: false, username?: undefined]
-  | [userId: string, username: string]
+type AuthProps = [userId: false] | [userId: string, username: string]
 export const authenticateUser = (...[userId, username]: AuthProps) =>
   axios.get<AuthResponse>(`/api/auth/isAuthenticated/${userId}/${username}`, {
     headers: authHeader(),

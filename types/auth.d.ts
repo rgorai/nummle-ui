@@ -1,6 +1,6 @@
 type Authenticated = {
   authenticated: true
-  userId: string
+  user_id: string
   username: string
   access_token: string
 }

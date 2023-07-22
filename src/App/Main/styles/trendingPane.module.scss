@@ -1,0 +1,19 @@
+.container {
+  position: sticky;
+  top: var(--nav-height);
+  width: 30%;
+  min-width: 25em;
+  height: calc(100vh - var(--nav-height));
+  border-left: var(--bs-border);
+  flex-shrink: 0;
+  padding: 2em;
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+    margin-top: 1em;
+  }
+}

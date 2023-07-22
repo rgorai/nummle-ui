@@ -10,6 +10,7 @@ import {
 } from '../../../state/sessionDataSlice'
 import RestaurantImage from '../../Restaurants/components/RestaurantImage'
 import ReactionBox from '../../User/components/ReactionBox'
+import TrendingPane from '../../Main/components/TrendingPane'
 
 // type FeedItemProps = {
 
@@ -40,39 +41,47 @@ const FeedPage = () => {
   }, [dispatch, feedItems.length])
 
   return (
-    <PageLoader loading={loading} error={pageError} pageData={feedItems}>
-      {(pageData) => (
-        <div className={styles.feedContainer}>
-          {pageData.map((post) => (
-            // TODO: REFACTOR TO SEPARATE COMPONENT
-            <Card className={styles.feedItemContainer} key={post._id}>
-              <RestaurantImage
-                className={styles.restaurantImage}
-                ogImage={post.restaurantImage}
-                restaurantName={post.restaurantName}
-              />
-              <div className={styles.postHeading}>
-                <div>
-                  <strong>{post.posterUsername}</strong> ordered at{' '}
-                  <em>{post.restaurantName}</em>
-                </div>
-                <div className="mt-2 text-muted">
-                  {new Date(post.updatedDate).toLocaleDateString()}
-                </div>
-              </div>
-              <div className={styles.itemsContainer}>
-                {Object.entries(post.items).map(([k, v]) => (
-                  <div className={styles.itemWrapper} key={k}>
-                    <div>{v.name}</div>
-                    <ReactionBox reaction={v.reaction} showCurrOnly />
+    <div className="pane-container">
+      <PageLoader loading={loading} error={pageError} pageData={feedItems}>
+        {(pageData) => (
+          <div className={styles.feedContainer}>
+            {pageData.map((post) => (
+              // TODO: REFACTOR TO SEPARATE COMPONENT
+              <Card className={styles.feedItemContainer} key={post._id}>
+                <RestaurantImage
+                  className={styles.restaurantImage}
+                  ogImage={post.restaurantImage}
+                  restaurantName={post.restaurantName}
+                />
+                <div className={styles.postHeading}>
+                  <div>
+                    <strong>{post.posterUsername}</strong> ordered at{' '}
+                    <em>{post.restaurantName}</em>
                   </div>
-                ))}
-              </div>
-            </Card>
-          ))}
-        </div>
-      )}
-    </PageLoader>
+                  <div className="mt-2 text-muted">
+                    {new Date(post.updatedDate).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className={styles.itemsContainer}>
+                  {Object.entries(post.items).map(([k, v]) => (
+                    <div className={styles.itemWrapper} key={k}>
+                      <div>{v.name}</div>
+                      <ReactionBox
+                        tense="past"
+                        reactionRank={v.reaction.rank}
+                        showCurrOnly
+                      />
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
+      </PageLoader>
+
+      <TrendingPane />
+    </div>
   )
 }
 

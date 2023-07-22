@@ -58,7 +58,7 @@ type Followers = {
 
 type Followings = {
   userId: string
-  following: Follow[]
+  followings: Follow[]
 }
 
 type FeedPost = {
@@ -69,7 +69,7 @@ type FeedPost = {
   restaurantId: string
   restaurantName: string
   restaurantImage: OgImage
-  items: Record<string, Omit<Item, 'reaction'> & { reaction: string }>
+  items: Record<string, Omit<Item, 'reaction'> & { reaction: ReactionOption }>
   postedDate: string
   updatedDate: string
 }

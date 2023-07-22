@@ -92,7 +92,7 @@ export const sessionDataSlice = createSlice({
       state,
       {
         payload: [userId, orderId, itemId, newReaction],
-      }: PayloadAction<[string, string, string, string]>
+      }: PayloadAction<[string, string, string, ReactionOption]>
     ) => {
       const orderIndex = state.orderHistories[userId].findIndex(
         (e) => e._id === orderId
@@ -107,7 +107,7 @@ export const sessionDataSlice = createSlice({
       state,
       {
         payload: [type, userId, followsData],
-      }: PayloadAction<['followers' | 'following', string, Follow[]]>
+      }: PayloadAction<['followers' | 'followings', string, Follow[]]>
     ) => {
       state[type === 'followers' ? 'userFollowers' : 'userFollowings'][userId] =
         followsData

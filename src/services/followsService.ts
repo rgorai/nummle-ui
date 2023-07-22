@@ -3,7 +3,7 @@ import { authHeader } from './authService'
 
 export const getUserFollows = (
   userId: string,
-  type: 'followers' | 'following'
+  type: 'followers' | 'followings'
 ) => axios.get<Follow[]>(`/api/follows/${type}/${userId}`)
 
 export const followUnfollowUser = (
