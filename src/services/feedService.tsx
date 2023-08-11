@@ -14,3 +14,9 @@ export const submitReaction = (
 
 export const getUserFeed = () =>
   axios.get<FeedPost[]>('/api/feeds/user-feed', { headers: authHeader() })
+
+export const getTrendingDishes = (lat: number, lon: number, day: number) =>
+  axios.get<TrendingDishes>(
+    `/api/feeds/trending-nearby-dow/${lat}/${lon}/${day}`,
+    { headers: authHeader() }
+  )

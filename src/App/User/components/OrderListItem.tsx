@@ -58,32 +58,34 @@ const OrderListItem = ({
           )}
 
           <Container className={styles.itemListContainer}>
-            {Object.entries(orderDetails.items).map(([k, v]) => (
-              <Row key={k}>
-                <Col md={2} lg={1}>
-                  <div className={styles.quantity}>{v.quantity}</div>
-                </Col>
-                <Col className={styles.name} md={4} lg={5}>
-                  {v.name}
-                </Col>
-                <Col className={styles.reactionsContainer} lg={5}>
-                  {isCurrUser ? (
-                    <ReactionBox
-                      userId={userId}
-                      orderId={orderDetails._id}
-                      itemId={k}
-                      tense="present"
-                    />
-                  ) : (
-                    <ReactionBox
-                      showCurrOnly={!isCurrUser}
-                      reactionRank={v.reaction?.rank ?? null}
-                      tense="past"
-                    />
-                  )}
-                </Col>
-              </Row>
-            ))}
+            {Object.entries(orderDetails.items)
+              .sort((a, b) => b[1].price - a[1].price)
+              .map(([k, v]) => (
+                <Row key={k}>
+                  <Col md={2} lg={1}>
+                    <div className={styles.quantity}>{v.quantity}</div>
+                  </Col>
+                  <Col className={styles.name} md={4} lg={5}>
+                    {v.name}
+                  </Col>
+                  <Col className={styles.reactionsContainer} lg={5}>
+                    {isCurrUser ? (
+                      <ReactionBox
+                        userId={userId}
+                        orderId={orderDetails._id}
+                        itemId={k}
+                        tense="present"
+                      />
+                    ) : (
+                      <ReactionBox
+                        showCurrOnly={!isCurrUser}
+                        reactionRank={v.reaction?.rank ?? null}
+                        tense="past"
+                      />
+                    )}
+                  </Col>
+                </Row>
+              ))}
           </Container>
         </div>
 

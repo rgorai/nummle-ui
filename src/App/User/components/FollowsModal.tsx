@@ -59,6 +59,10 @@ const FollowsModal = (props: Props) => {
       )
     )
       getFollows(props.userId, props.type)
+
+    return () => {
+      setShowModal(false)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     authInfo.authenticated,

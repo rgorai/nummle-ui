@@ -1,3 +1,5 @@
+@use '../../../mixins' as *;
+
 .container {
   position: sticky;
   top: var(--nav-height);
@@ -7,6 +9,7 @@
   border-left: var(--bs-border);
   flex-shrink: 0;
   padding: 2em;
+  overflow-y: auto;
 
   h1 {
     font-size: 2em;
@@ -15,5 +18,25 @@
   h2 {
     font-size: 1.25em;
     margin-top: 1em;
+    font-weight: 600;
+  }
+
+  .itemsContainer {
+    @include flex-display(column);
+    gap: 1em;
+  }
+
+  .itemContainer {
+    width: 100%;
+    text-decoration: none;
+    border-radius: 0.25em;
+    color: black;
+
+    // padding: -1em;
+
+    &:hover {
+      background-color: var(--layer-01);
+      outline: 5px solid var(--layer-01);
+    }
   }
 }

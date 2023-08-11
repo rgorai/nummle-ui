@@ -29,7 +29,6 @@ const FeedPage = () => {
       setLoading(true)
       getUserFeed()
         .then(({ data }) => {
-          console.log('feed data', data)
           dispatch(setFeedItems(data))
         })
         .catch(({ response }) => {

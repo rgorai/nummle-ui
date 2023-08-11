@@ -60,28 +60,3 @@ type Followings = {
   userId: string
   followings: Follow[]
 }
-
-type FeedPost = {
-  _id: string
-  orderId: string
-  posterId: string
-  posterUsername: string
-  restaurantId: string
-  restaurantName: string
-  restaurantImage: OgImage
-  items: Record<string, Omit<Item, 'reaction'> & { reaction: ReactionOption }>
-  postedDate: string
-  updatedDate: string
-}
-
-type BroadcastFeedPost = Omit<
-  FeedPost,
-  '_id' | 'postedDate' | 'updatedDate' | 'items'
-> & {
-  reactedItemInfo: Item
-}
-
-type UserFeed = {
-  userId: string
-  feedItems: string[]
-}

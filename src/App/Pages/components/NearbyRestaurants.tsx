@@ -21,10 +21,10 @@ const NearbyRestaurants = () => {
   const [loading, setLoading] = useState(false)
   const [pageError, setPageError] = useState<ServerError | null>(null)
 
-  const searchDisabled =
-    address.trim().length === 0 ||
-    address.trim().toLowerCase() ===
-      clientLocation?.address.trim().toLowerCase()
+  const searchDisabled = address.trim().length === 0
+  // ||
+  // address.trim().toLowerCase() ===
+  //   clientLocation?.address.trim().toLowerCase()
 
   const getNearbyRestaurants = useCallback(() => {
     setLoading(true)

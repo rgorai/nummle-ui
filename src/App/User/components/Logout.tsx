@@ -8,6 +8,9 @@ const Logout = () => {
 
   useEffect(() => {
     setAuthInfo(logout())
+
+    // manually reload window to clear Redux session data
+    window.location.reload()
   }, [setAuthInfo])
 
   return <Navigate replace to="/" />
