@@ -10,14 +10,14 @@ export const PrefetchUserFollowing = () => {
   const dispatch = useAppDispatch()
 
   const currUserFollowingList = authInfo.authenticated
-    ? userFollowings[authInfo.userId]
+    ? userFollowings[authInfo.user_id]
     : null
 
   const getCurrUserFollowing = useCallback(
     (userId: string) => {
-      getUserFollows(userId, 'following')
+      getUserFollows(userId, 'followings')
         .then(({ data }) => {
-          dispatch(addFollowsData(['following', userId, data]))
+          dispatch(addFollowsData(['followings', userId, data]))
           // console.log('curr user following', data)
         })
         .catch(({ response }) => {
@@ -29,12 +29,12 @@ export const PrefetchUserFollowing = () => {
 
   useEffect(() => {
     if (authInfo.authenticated && !currUserFollowingList)
-      getCurrUserFollowing(authInfo.userId)
+      getCurrUserFollowing(authInfo.user_id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     authInfo.authenticated,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    (authInfo as Authenticated).userId,
+    (authInfo as Authenticated).user_id,
     currUserFollowingList,
     getCurrUserFollowing,
   ])

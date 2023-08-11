@@ -1,3 +1,5 @@
+@use '_mixins' as *;
+
 /* CSS variables */
 :root {
   // colors
@@ -84,4 +86,9 @@ h1 {
   top: var(--nav-height);
   width: 100%;
   border-radius: 0;
+}
+
+.pane-container {
+  @include flex-display(row, flex-start, flex-start);
+  flex-grow: 0;
 }

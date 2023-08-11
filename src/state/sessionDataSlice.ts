@@ -11,6 +11,7 @@ type SessionDataState = {
   userFollowers: { [userId: string]: Follow[] }
   userFollowings: { [userId: string]: Follow[] }
   feedItems: FeedPost[]
+  trendingDishes: TrendingDishes | null
 }
 
 const defaultState: SessionDataState = {
@@ -22,6 +23,7 @@ const defaultState: SessionDataState = {
   userFollowers: {},
   userFollowings: {},
   feedItems: [],
+  trendingDishes: null,
 }
 
 const initialState: SessionDataState = (
@@ -92,7 +94,7 @@ export const sessionDataSlice = createSlice({
       state,
       {
         payload: [userId, orderId, itemId, newReaction],
-      }: PayloadAction<[string, string, string, string]>
+      }: PayloadAction<[string, string, string, ReactionOption]>
     ) => {
       const orderIndex = state.orderHistories[userId].findIndex(
         (e) => e._id === orderId
@@ -107,7 +109,7 @@ export const sessionDataSlice = createSlice({
       state,
       {
         payload: [type, userId, followsData],
-      }: PayloadAction<['followers' | 'following', string, Follow[]]>
+      }: PayloadAction<['followers' | 'followings', string, Follow[]]>
     ) => {
       state[type === 'followers' ? 'userFollowers' : 'userFollowings'][userId] =
         followsData
@@ -149,6 +151,10 @@ export const sessionDataSlice = createSlice({
     setFeedItems: (state, { payload }: PayloadAction<FeedPost[]>) => {
       state.feedItems = payload
     },
+
+    setTrendingDishes: (state, { payload }: PayloadAction<TrendingDishes>) => {
+      state.trendingDishes = payload
+    },
   },
 })
 
@@ -162,6 +168,7 @@ export const {
   addFollowsData,
   updateFollow,
   setFeedItems,
+  setTrendingDishes,
 } = sessionDataSlice.actions
 
 export const selectSessionData = (state: RootState) => state.sessionData

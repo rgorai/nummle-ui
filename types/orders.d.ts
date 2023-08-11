@@ -2,7 +2,7 @@ type Item = {
   name: string
   price: number
   quantity: number
-  reaction: string | null
+  reaction: ReactionOption | null
 }
 
 type AddItem = Omit<Item, 'reaction'>
@@ -30,9 +30,12 @@ type Order = {
 
 type OrderPublic = Omit<Order, 'cost' | 'status'>
 
-type CreateOrder = Omit<
-  Order,
-  '_id' | 'createdAt' | 'updatedAt' | 'status' | 'items'
-> & {
+type CreateOrder = Omit<Order, '_id' | 'updatedAt' | 'status' | 'items'> & {
   items: Record<string, AddItem>
+}
+
+type ReactionOption = {
+  rank: number
+  present: string
+  past: string
 }

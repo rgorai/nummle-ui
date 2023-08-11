@@ -13,7 +13,9 @@ import {
 } from '../../../state/sessionDataSlice'
 import { submitReaction } from '../../../services/feedService'
 
-type Props =
+type Props = {
+  tense: 'present' | 'past'
+} & (
   | {
       userId: string
       orderId: string
@@ -21,53 +23,67 @@ type Props =
     }
   | {
       showCurrOnly: true
-      reaction: string | null
+      reactionRank: number | null
     }
+)
 
 const isCurrOnly = (props: any): props is { showCurrOnly: true } =>
   props.showCurrOnly !== undefined
-
-const ReactionImage = (reaction: string | null, showCurrOnly: boolean) => (
-  <OverlayTrigger
-    placement="top"
-    offset={[0, 8]}
-    overlay={<Tooltip>{reaction ?? 'No reaction yet!'}</Tooltip>}
-  >
-    <img
-      className={cx(styles.icon, { [styles.showCurrOnly]: showCurrOnly })}
-      {...(reaction
-        ? {
-            src: `${PUBLIC_URL}/images/reactions/${reaction.toLowerCase()}.png`,
-            alt: reaction,
-          }
-        : {
-            src: `${PUBLIC_URL}/images/icons/thought-balloon.png`,
-            alt: 'No reaction yet!',
-          })}
-    />
-  </OverlayTrigger>
-)
 
 const ReactionBox = (props: Props) => {
   const { orderHistories } = useAppSelector(selectSessionData)
   const dispatch = useAppDispatch()
 
-  const reaction = isCurrOnly(props)
-    ? props.reaction
+  const ReactionImage = (
+    reactionRank: number | null,
+    showCurrOnly: boolean
+  ) => (
+    <OverlayTrigger
+      placement="top"
+      offset={[0, 8]}
+      overlay={
+        <Tooltip>
+          {reactionRank !== null
+            ? reactions[reactionRank][props.tense]
+            : 'No reaction yet!'}
+        </Tooltip>
+      }
+    >
+      <img
+        className={cx(styles.icon, { [styles.showCurrOnly]: showCurrOnly })}
+        {...(reactionRank !== null
+          ? {
+              src: `${PUBLIC_URL}/images/reactions/${reactions[
+                reactionRank
+              ].present.toLowerCase()}.png`,
+              alt: reactions[reactionRank].present,
+            }
+          : {
+              src: `${PUBLIC_URL}/images/icons/thought-balloon.png`,
+              alt: 'No reaction yet!',
+            })}
+      />
+    </OverlayTrigger>
+  )
+
+  const reaction: ReactionOption | null = isCurrOnly(props)
+    ? props.reactionRank
+      ? reactions[props.reactionRank]
+      : null
     : orderHistories[props.userId].find((e) => e._id === props.orderId)?.items[
         props.itemId
-      ].reaction
+      ].reaction ?? null
 
-  const onReactionChange = (newReaction: string) => {
-    if (reaction !== newReaction && !isCurrOnly(props))
-      submitReaction(props.orderId, props.itemId, newReaction)
+  const onReactionChange = (newReactionRank: number) => {
+    if (reaction?.rank !== newReactionRank && !isCurrOnly(props))
+      submitReaction(props.orderId, props.itemId, newReactionRank)
         .then(() => {
           dispatch(
             updateReaction([
               props.userId,
               props.orderId,
               props.itemId,
-              newReaction,
+              reactions[newReactionRank],
             ])
           )
         })
@@ -79,7 +95,7 @@ const ReactionBox = (props: Props) => {
   return (
     <div className={styles.reactionsWrapper}>
       {isCurrOnly(props) ? (
-        <div>{ReactionImage(props.reaction, true)}</div>
+        <div>{ReactionImage(props.reactionRank, true)}</div>
       ) : (
         <>
           <ToggleButtonGroup
@@ -88,19 +104,19 @@ const ReactionBox = (props: Props) => {
             })}
             name="reactions"
             type="radio"
-            value={reaction}
+            value={reaction?.rank}
             onChange={onReactionChange}
           >
             {reactions.map((e) => (
               <ToggleButton
-                id={`${props.orderId}-${props.itemId}-${e}`}
+                id={`${props.orderId}-${props.itemId}-${e.rank}`}
                 className={cx(styles.iconContainer, {
-                  [styles.active]: reaction === e,
+                  [styles.active]: reaction?.rank === e.rank,
                 })}
-                value={e}
-                key={e}
+                value={e.rank}
+                key={e.rank}
               >
-                {ReactionImage(e, false)}
+                {ReactionImage(e.rank, false)}
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
@@ -113,7 +129,7 @@ const ReactionBox = (props: Props) => {
                   {"You haven't reacted yet!"}
                 </Tooltip>
               }
-              offset={[0, 3]}
+              offset={[0, 8]}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -17,7 +17,7 @@ import UserListItem from './UserListItem'
 
 type Props = {
   userId: string
-  type: 'followers' | 'following'
+  type: 'followers' | 'followings'
   amount: number
 }
 
@@ -37,7 +37,7 @@ const FollowsModal = (props: Props) => {
       : userFollowings[props.userId]
 
   const getFollows = useCallback(
-    (userId: string, type: 'followers' | 'following') => {
+    (userId: string, type: 'followers' | 'followings') => {
       getUserFollows(userId, type)
         .then(({ data }) => {
           dispatch(addFollowsData([type, userId, data]))
@@ -54,16 +54,20 @@ const FollowsModal = (props: Props) => {
       !currFollows &&
       !(
         authInfo.authenticated &&
-        authInfo.userId === props.userId &&
-        props.type === 'following'
+        authInfo.user_id === props.userId &&
+        props.type === 'followings'
       )
     )
       getFollows(props.userId, props.type)
+
+    return () => {
+      setShowModal(false)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     authInfo.authenticated,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    (authInfo as Authenticated).userId,
+    (authInfo as Authenticated).user_id,
     currFollows,
     getFollows,
     props.type,

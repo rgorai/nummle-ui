@@ -118,7 +118,7 @@ const ProfilePage = ({ getCurrUser }: Props) => {
                   />
                   <FollowsModal
                     userId={pageData._id}
-                    type="following"
+                    type="followings"
                     amount={pageData.numFollowing}
                   />
                 </div>
