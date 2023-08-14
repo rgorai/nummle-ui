@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import Loading from '../App/Main/components/Loading'
 import ErrorPage from '../App/Pages/components/ErrorPage'
 

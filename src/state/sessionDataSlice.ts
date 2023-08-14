@@ -5,7 +5,7 @@ import { RootState } from '.'
 type SessionDataState = {
   clientLocation: ClientLocation | null
   nearbyRestaurants: TomTomApiObject[] | null
-  loadedRestaurants: { [restaurantId: string]: TomTomApiObject }
+  loadedRestaurants: { [restaurantId: string]: RestaurantPage }
   loadedProfiles: { [username: string]: UserProfilePrivate | UserProfilePublic }
   orderHistories: { [userId: string]: (Order | OrderPublic)[] }
   userFollowers: { [userId: string]: Follow[] }
@@ -67,7 +67,7 @@ export const sessionDataSlice = createSlice({
 
     addLoadedRestaurant: (
       state,
-      { payload: restaurantDetails }: PayloadAction<TomTomApiObject>
+      { payload: restaurantDetails }: PayloadAction<RestaurantPage>
     ) => {
       state.loadedRestaurants[restaurantDetails.id] = restaurantDetails
     },

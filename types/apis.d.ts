@@ -7,6 +7,10 @@ type TomTomApiObject = {
   poi: {
     name: string
     url: string | undefined
+    phone: string
   }
-  restaurantOgData: { ogImage: OgImage }
+  address: {
+    freeformAddress: string
+  }
+  restaurantOgData: { ogImage: OgImage } | null
 } & { [key: string]: any }

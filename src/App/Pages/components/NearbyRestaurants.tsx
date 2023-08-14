@@ -51,24 +51,8 @@ const NearbyRestaurants = () => {
       .then(() => setLoading(false))
   }, [address, dispatch])
 
-  useEffect(() => {
-    // console.log('clientLocation', clientLocation)
-    console.log(
-      'nearbyRestaurants',
-      nearbyRestaurants?.map((e) => {
-        const ogImage = e.restaurantOgData?.ogImage
-        return {
-          id: e.id,
-          name: e.poi.name,
-          imagePath: ogImage,
-        }
-      })
-    )
-  }, [clientLocation, nearbyRestaurants])
-
   const onAddressSubmit = (ev: any) => {
     ev.preventDefault()
-
     if (!searchDisabled) getNearbyRestaurants()
   }
 
