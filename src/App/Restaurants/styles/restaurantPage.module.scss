@@ -3,14 +3,13 @@
 .pageContainer {
   @include flex-display(column, flex-start, flex-start);
 
-  padding: 2em;
-
   .headerContainer {
     @include flex-display(row, flex-start, flex-start);
 
     width: 100%;
     gap: 3em;
     margin-bottom: 2em;
+    padding: 2em;
 
     .restaurantImage {
       max-width: 35vw;
@@ -58,8 +57,8 @@
     .items {
       @include flex-display(column, flex-start, flex-start);
 
-      max-width: 60em;
-      padding: 1em;
+      max-width: 70em;
+      padding: 3em;
       padding-top: 2.5em;
       margin: 0 auto;
       gap: 4em;
@@ -67,7 +66,7 @@
       .itemsContainer {
         @include grid-display(1fr 1fr);
 
-        flex-wrap: wrap;
+        width: 100%;
         gap: 2em;
       }
     }

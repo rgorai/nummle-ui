@@ -15,6 +15,7 @@ import { submitReaction } from '../../../services/feedService'
 
 type Props = {
   tense: 'present' | 'past'
+  className?: string
 } & (
   | {
       userId: string
@@ -93,9 +94,11 @@ const ReactionBox = (props: Props) => {
   }
 
   return (
-    <div className={styles.reactionsWrapper}>
+    <div className={cx(props.className, styles.reactionsWrapper)}>
       {isCurrOnly(props) ? (
-        <div>{ReactionImage(props.reactionRank, true)}</div>
+        <div className={styles.currOnlyContainer}>
+          {ReactionImage(props.reactionRank, true)}
+        </div>
       ) : (
         <>
           <ToggleButtonGroup

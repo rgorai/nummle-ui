@@ -5,11 +5,21 @@ import { RootState } from '.'
 type SessionDataState = {
   clientLocation: ClientLocation | null
   nearbyRestaurants: TomTomApiObject[] | null
-  loadedRestaurants: { [restaurantId: string]: RestaurantPage }
-  loadedProfiles: { [username: string]: UserProfilePrivate | UserProfilePublic }
-  orderHistories: { [userId: string]: (Order | OrderPublic)[] }
-  userFollowers: { [userId: string]: Follow[] }
-  userFollowings: { [userId: string]: Follow[] }
+  loadedRestaurants: {
+    [restaurantId: string]: RestaurantPage
+  }
+  loadedProfiles: {
+    [username: string]: UserProfilePrivate | UserProfilePublic
+  }
+  orderHistories: {
+    [userId: string]: (Order | OrderPublic)[]
+  }
+  userFollowers: {
+    [userId: string]: Follow[]
+  }
+  userFollowings: {
+    [userId: string]: Follow[]
+  }
   feedItems: FeedPost[]
   trendingDishes: TrendingDishes | null
 }

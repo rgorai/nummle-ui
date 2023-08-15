@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import Form from 'react-bootstrap/esm/Form'
 import Button from 'react-bootstrap/esm/Button'
 import { searchRestaurants } from '../../../services/searchService'

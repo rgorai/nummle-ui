@@ -10,6 +10,7 @@ type AddItem = Omit<Item, 'reaction'>
 type Order = {
   _id: string
   userId: string
+  username: string
   restaurant: {
     id: string
     name: string

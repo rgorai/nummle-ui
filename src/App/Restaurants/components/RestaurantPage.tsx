@@ -1,8 +1,11 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import cx from 'classnames'
 import { useQueryState } from 'react-router-use-location-state'
-import { getRestaurantDetails } from '../../../services/searchService'
+import {
+  getMenuItemReactions,
+  getRestaurantDetails,
+} from '../../../services/searchService'
 import { setDocumentTitle } from '../../../utils/misc'
 import styles from '../styles/restaurantPage.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../state/hooks'
@@ -30,26 +33,46 @@ const RestaurantPage = () => {
 
   const currRestaurant = restaurantId ? loadedRestaurants[restaurantId] : null
 
+  const callApis = useCallback(
+    async (_restaurantId: string) => {
+      setLoading(true)
+
+      try {
+        const { data: details } = await getRestaurantDetails(_restaurantId)
+
+        let reactions: MenuReactions | null
+        try {
+          const { data: reactionsData } = await getMenuItemReactions(
+            _restaurantId
+          )
+          reactions = reactionsData
+        } catch (err) {
+          reactions = null
+        }
+
+        dispatch(
+          addLoadedRestaurant({
+            ...parseTomTomRestaurant(details),
+            menuReactions: reactions,
+          })
+        )
+      } catch (err: any) {
+        console.error('get details error', err.response)
+        setPageError(err.response)
+      }
+
+      setLoading(false)
+    },
+    [dispatch]
+  )
+
   useEffect(() => {
     if (currRestaurant) setDocumentTitle(currRestaurant.name)
-    console.log('HERE', currRestaurant)
   }, [currRestaurant])
 
   useEffect(() => {
-    if (restaurantId && !currRestaurant) {
-      setLoading(true)
-      getRestaurantDetails(restaurantId)
-        .then(({ data }) => {
-          dispatch(addLoadedRestaurant(parseTomTomRestaurant(data)))
-          // setCurrMenuCategory(data)
-        })
-        .catch(({ response }) => {
-          console.error('get details error', response)
-          setPageError(response)
-        })
-        .then(() => setLoading(false))
-    }
-  }, [currRestaurant, dispatch, restaurantId])
+    if (restaurantId && !currRestaurant) callApis(restaurantId)
+  }, [callApis, currRestaurant, restaurantId])
 
   return (
     <PageLoader loading={loading} error={pageError} pageData={currRestaurant}>
@@ -64,9 +87,11 @@ const RestaurantPage = () => {
 
             <div className={styles.detailsContainer}>
               <h1>{pageData.name}</h1>
-              <div className="text-muted">{`${
-                pageData.freeFormAddress
-              } • ${transformTomTomPhoneNumber(pageData.phoneNumber)}`}</div>
+              <div className="text-muted">{`${pageData.freeFormAddress}${
+                pageData.phoneNumber
+                  ? ` • ${transformTomTomPhoneNumber(pageData.phoneNumber)}`
+                  : ''
+              }`}</div>
             </div>
           </div>
 
@@ -84,11 +109,15 @@ const RestaurantPage = () => {
 
             <div className={styles.items}>
               {pageData.menu.map((e) => (
-                <div key={e.categoryName}>
+                <div className={styles.categoryContainer} key={e.categoryName}>
                   <h2>{e.categoryName}</h2>
                   <div className={styles.itemsContainer}>
                     {e.items.map((item) => (
-                      <MenuItem {...item} key={item.id} />
+                      <MenuItem
+                        info={item}
+                        reactions={pageData.menuReactions?.[item.id] ?? null}
+                        key={item.id}
+                      />
                     ))}
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-export const dummyMenu: RestaurantMenu = [
+export const dummyMenuData: RestaurantMenu = [
   {
     categoryName: 'Appetizers',
     items: [

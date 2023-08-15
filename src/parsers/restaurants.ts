@@ -1,8 +1,8 @@
-import { dummyMenu } from '../tson/menuDummyData'
+import { dummyMenuData } from '../tson/menuDummyData'
 
 export const parseTomTomRestaurant = (
   details: TomTomApiObject
-): RestaurantPage => ({
+): RestaurantDetails => ({
   id: details.id,
   name: details.poi.name,
   ogImage: details.restaurantOgData?.ogImage,
@@ -10,5 +10,5 @@ export const parseTomTomRestaurant = (
   freeFormAddress: details.address.freeformAddress,
   phoneNumber: details.poi.phone,
   // TODO: REPLACE DUMMY ITEMS DATA
-  menu: dummyMenu,
+  menu: dummyMenuData,
 })

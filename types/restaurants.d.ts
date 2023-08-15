@@ -1,11 +1,15 @@
-type RestaurantPage = {
+type RestaurantDetails = {
   id: string
   name: string
   ogImage: OgImage
   websiteUrl: string | undefined
   freeFormAddress: string
-  phoneNumber: string
+  phoneNumber?: string
   menu: RestaurantMenu
+}
+
+type RestaurantPage = RestaurantDetails & {
+  menuReactions: MenuReactions | null
 }
 
 type MenuItem = {
@@ -23,11 +27,13 @@ type MenuCategories = {
 
 type RestaurantMenu = MenuCategories[]
 
-type MenuItemReactions = {
-  reactionRank: number
-  users: {
+type MenuItemReactions = Record<
+  number,
+  {
     id: string
     username: string
     profileImage: string | null
   }[]
-}[]
+>
+
+type MenuReactions = Record<string, MenuItemReactions>
