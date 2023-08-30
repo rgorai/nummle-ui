@@ -78,19 +78,19 @@ const ReactionBox = (props: Props) => {
   const onReactionChange = (newReactionRank: number) => {
     if (reaction?.rank !== newReactionRank && !isCurrOnly(props))
       submitReaction(props.orderId, props.itemId, newReactionRank)
-        .then(() => {
+        .then(({ data }) => {
           dispatch(
             updateReaction([
-              props.userId,
-              props.orderId,
-              props.itemId,
-              reactions[newReactionRank],
+              data.userId,
+              data.orderId,
+              data.itemId,
+              reactions[data.newReactionRank],
             ])
           )
         })
-        .catch(({ response }) =>
+        .catch(({ response }) => {
           console.error('submit reaction error', response)
-        )
+        })
   }
 
   return (

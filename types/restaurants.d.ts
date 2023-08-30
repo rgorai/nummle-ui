@@ -12,7 +12,7 @@ type RestaurantPage = RestaurantDetails & {
   menuReactions: MenuReactions | null
 }
 
-type MenuItem = {
+type MenuListItem = {
   id: string
   name: string
   price: number
@@ -22,7 +22,7 @@ type MenuItem = {
 
 type MenuCategories = {
   categoryName: string
-  items: MenuItem[]
+  items: MenuListItem[]
 }
 
 type RestaurantMenu = MenuCategories[]

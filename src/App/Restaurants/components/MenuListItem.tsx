@@ -4,12 +4,12 @@ import ReactionBox from '../../User/components/ReactionBox'
 import styles from '../styles/menuItem.module.scss'
 
 type Props = {
-  info: MenuItem
+  info: MenuListItem
   reactions: MenuItemReactions | null
 }
 
-const MenuItem = ({ info, reactions }: Props) => (
-  <div className={styles.container}>
+const MenuListItem = ({ info, reactions }: Props) => (
+  <div id={info.id} className={styles.container}>
     <div className={styles.price}>{`$${info.price}`}</div>
 
     <NummleImage
@@ -28,17 +28,21 @@ const MenuItem = ({ info, reactions }: Props) => (
         )}
       </div>
 
+      {/* {(() => {
+        console.log('THIS', reactions)
+        return null
+      })()} */}
+
       {reactions && (
         <div className={styles.reactions}>
           {Object.entries(reactions).map(([itemId, users]) => (
-            <div className={styles.reactionBox}>
+            <div className={styles.reactionBox} key={itemId}>
               <ReactionBox
                 className={styles.reaction}
                 showCurrOnly
                 reactionRank={Number(itemId)}
                 tense="present"
               />
-
               <span className={styles.numUsers}>{users.length}</span>
             </div>
           ))}
@@ -48,4 +52,4 @@ const MenuItem = ({ info, reactions }: Props) => (
   </div>
 )
 
-export default MenuItem
+export default MenuListItem

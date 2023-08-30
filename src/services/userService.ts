@@ -11,7 +11,7 @@ export const getPublicUserProfile = (username: string) =>
   axios.get<UserProfilePublic>(`/api/users/profile/${username}`)
 
 export const getCurrUserOrderHistory = () =>
-  axios.get<Order[]>('/api/orders/history', { headers: authHeader() })
+  axios.get<ApiOrder[]>('/api/orders/history', { headers: authHeader() })
 
 export const getPublicOrderHistory = (userId: string) =>
-  axios.get<OrderPublic[]>(`/api/orders/public/${userId}`)
+  axios.get<ApiOrderPublic[]>(`/api/orders/public/${userId}`)

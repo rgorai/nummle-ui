@@ -1,4 +1,11 @@
+type ReactionOption = {
+  rank: number
+  present: string
+  past: string
+}
+
 type Item = {
+  itemId: string
   name: string
   price: number
   quantity: number
@@ -11,19 +18,26 @@ type Order = {
   _id: string
   userId: string
   username: string
+  userProfileImage: string | null
   restaurant: {
     id: string
     name: string
     ogImage: OgImage
+    address: string
+    coordinates: {
+      lat: number
+      lon: number
+    }
   }
-  createdAt: string
-  updatedAt: string
+  deliveryAddress: string | null
+  createdAt: Date
+  updatedAt: Date
   items: Record<string, Item>
   cost: {
     subtotal: number
     tax: number
     serviceFee: number
-    tip?: number
+    tip: number
     total: number
   }
   status: 'Placed' | 'Confirmed' | 'In Progress' | 'Complete' | 'Cancelled'
@@ -33,10 +47,4 @@ type OrderPublic = Omit<Order, 'cost' | 'status'>
 
 type CreateOrder = Omit<Order, '_id' | 'updatedAt' | 'status' | 'items'> & {
   items: Record<string, AddItem>
-}
-
-type ReactionOption = {
-  rank: number
-  present: string
-  past: string
 }

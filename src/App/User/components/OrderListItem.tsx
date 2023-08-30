@@ -4,6 +4,7 @@ import Stack from 'react-bootstrap/esm/Stack'
 import Container from 'react-bootstrap/esm/Container'
 import Row from 'react-bootstrap/esm/Row'
 import Col from 'react-bootstrap/esm/Col'
+import { Link } from 'react-router-dom'
 import RestaurantImage from '../../Restaurants/components/RestaurantImage'
 import styles from '../styles/orderListItem.module.scss'
 import { useAuthInfo } from '../../../state/authContext'
@@ -91,13 +92,14 @@ const OrderListItem = ({
 
         <Stack className={styles.buttonContainer} gap={2}>
           <Button size="lg">{isCurrUser ? 'Reorder' : 'Clone Order'}</Button>
-          <Button
-            href={`/restaurants/${orderDetails.restaurant.id}`}
-            size="lg"
-            variant="outline-secondary-dark"
+          <Link
+            className="btn btn-lg btn-outline-secondary-dark"
+            to={`/restaurants/${orderDetails.restaurant.id}`}
+            // size="lg"
+            // variant="outline-secondary-dark"
           >
             Visit Store
-          </Button>
+          </Link>
         </Stack>
       </div>
     </ListGroupItem>

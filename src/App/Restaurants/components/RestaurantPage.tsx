@@ -1,5 +1,5 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import cx from 'classnames'
 import { useQueryState } from 'react-router-use-location-state'
 import {
@@ -17,7 +17,7 @@ import PageLoader from '../../../Wrappers/PageLoader'
 import { parseTomTomRestaurant } from '../../../parsers/restaurants'
 import { transformTomTomPhoneNumber } from '../../../utils/strings'
 import RestaurantImage from './RestaurantImage'
-import MenuItem from './MenuItem'
+import MenuListItem from './MenuListItem'
 
 // TODO: RETEST EVERYTHING AFTER IMPLEMENTING SEARCH FOR INDIVIDUAL RESTAURANT
 
@@ -27,9 +27,11 @@ const RestaurantPage = () => {
   const { restaurantId } = useParams()
   const [loading, setLoading] = useState(false)
   const [pageError, setPageError] = useState<ServerError | null>(null)
-  const [currMenuCategory, setCurrMenuCategory] = useQueryState<
-    string | undefined
-  >('currCat', '')
+  const [scrollTo, setScrollTo] = useQueryState<string | undefined>(
+    'scrollTo',
+    'hello'
+  )
+  const navigate = useNavigate()
 
   const currRestaurant = restaurantId ? loadedRestaurants[restaurantId] : null
 
@@ -96,31 +98,47 @@ const RestaurantPage = () => {
           </div>
 
           <div className={styles.menuContainer}>
-            <div className={styles.sidebar}>
-              {pageData.menu.map((e) => (
-                <div
-                  className={cx('text-muted', styles.sidebarLink)}
-                  key={e.categoryName}
-                >
-                  {e.categoryName}
-                </div>
-              ))}
-            </div>
+            <nav className={styles.sidebar}>
+              <ul>
+                {pageData.menu.map((e) => (
+                  <li
+                    className={cx('text-muted', styles.sidebarLink)}
+                    onClick={() => {
+                      // navigate(`#${encodeURIComponent(e.categoryName)}`)
+                      setScrollTo(encodeURIComponent(e.categoryName))
+                      console.log('clicked', encodeURIComponent(e.categoryName))
+                    }}
+                    key={e.categoryName}
+                  >
+                    {e.categoryName}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {(() => {
+              console.log('THIS', pageData)
+              return null
+            })()}
 
             <div className={styles.items}>
               {pageData.menu.map((e) => (
-                <div className={styles.categoryContainer} key={e.categoryName}>
+                <section
+                  id={e.categoryName}
+                  className={styles.categoryContainer}
+                  key={e.categoryName}
+                >
                   <h2>{e.categoryName}</h2>
                   <div className={styles.itemsContainer}>
                     {e.items.map((item) => (
-                      <MenuItem
+                      <MenuListItem
                         info={item}
                         reactions={pageData.menuReactions?.[item.id] ?? null}
                         key={item.id}
                       />
                     ))}
                   </div>
-                </div>
+                </section>
               ))}
             </div>
           </div>

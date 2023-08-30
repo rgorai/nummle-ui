@@ -6,7 +6,12 @@ export const submitReaction = (
   itemId: string,
   newReactionRank: number
 ) =>
-  axios.post(
+  axios.post<{
+    itemId: string
+    userId: string
+    orderId: string
+    newReactionRank: number
+  }>(
     '/api/orders/reaction',
     { orderId, itemId, newReactionRank },
     { headers: authHeader() }

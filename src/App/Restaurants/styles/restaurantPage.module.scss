@@ -8,7 +8,6 @@
 
     width: 100%;
     gap: 3em;
-    margin-bottom: 2em;
     padding: 2em;
 
     .restaurantImage {
@@ -40,6 +39,16 @@
       border-right: var(--bs-border);
       padding: 1em;
       gap: 0.25em;
+
+      ul {
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          width: 100%;
+        }
+      }
 
       .sidebarLink {
         padding: 0.5em 0.75em;
