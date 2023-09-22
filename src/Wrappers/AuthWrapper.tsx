@@ -5,6 +5,9 @@ import { useAuthInfo } from '../state/authContext'
 
 // TODO: rework authentication with cookies and without JWT for production
 
+// TODO: auth wrapper does not re authenticate on pages that don't
+// need authentication, so it does not update logged in state to ui
+
 type Props = {
   ensureNotAuthenticated: boolean | null
 }

@@ -1,0 +1,83 @@
+@use '../../../mixins' as *;
+
+.pageContainer {
+  @include flex-display(column, flex-start, flex-start);
+
+  .headerContainer {
+    @include flex-display(row, flex-start, flex-start);
+
+    width: 100%;
+    gap: 3em;
+    padding: 2em;
+
+    .restaurantImage {
+      max-width: 35vw;
+    }
+
+    .detailsContainer {
+      width: 100%;
+    }
+  }
+
+  .menuContainer {
+    @include flex-display(row, flex-start, flex-start);
+
+    width: 100%;
+    border-top: var(--bs-border);
+
+    h2 {
+      margin-bottom: 1em;
+    }
+
+    .sidebar {
+      @include flex-display(column, flex-start, flex-start);
+
+      position: sticky;
+      top: var(--nav-height);
+      width: 15em;
+      height: calc(100vh - var(--nav-height));
+      border-right: var(--bs-border);
+      padding: 1em;
+      gap: 0.25em;
+
+      ul {
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          width: 100%;
+        }
+      }
+
+      .sidebarLink {
+        padding: 0.5em 0.75em;
+        width: 100%;
+        border-radius: 0.25em;
+
+        &:hover {
+          color: black !important;
+          background-color: var(--layer-01);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .items {
+      @include flex-display(column, flex-start, flex-start);
+
+      max-width: 70em;
+      padding: 3em;
+      padding-top: 2.5em;
+      margin: 0 auto;
+      gap: 4em;
+
+      .itemsContainer {
+        @include grid-display(1fr 1fr);
+
+        width: 100%;
+        gap: 2em;
+      }
+    }
+  }
+}

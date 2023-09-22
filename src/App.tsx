@@ -9,7 +9,7 @@ import ExplorePage from './App/Pages/components/ExplorePage'
 import DocumentTitleWrapper from './Wrappers/DocumentTitleWrapper'
 import AuthWrapper from './Wrappers/AuthWrapper'
 import Logout from './App/User/components/Logout'
-import RestaurantDetails from './App/Restaurants/components/RestaurantDetails'
+import RestaurantPage from './App/Restaurants/components/RestaurantPage'
 import NearbyRestaurants from './App/Pages/components/NearbyRestaurants'
 import { PrefetchUserFollowing } from './services/prefetchService'
 import { useAuthInfo } from './state/authContext'
@@ -86,7 +86,7 @@ const APP_CONTENT: AppContent = [
   {
     label: 'Restaurant Details',
     path: '/restaurants/:restaurantId',
-    element: <RestaurantDetails />,
+    element: <RestaurantPage />,
     ensureAuthenticated: null,
     overrideDocumentTitle: true,
   },

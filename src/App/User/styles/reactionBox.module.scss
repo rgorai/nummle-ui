@@ -13,9 +13,19 @@
 
   .icon {
     display: inline;
+    height: 100%;
     width: 2em;
     cursor: pointer;
     transition: scale 0.1s ease-in-out;
+  }
+
+  .currOnlyContainer {
+    height: 100%;
+
+    .icon {
+      display: block;
+      height: 100%;
+    }
   }
 }
 

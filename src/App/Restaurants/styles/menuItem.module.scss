@@ -1,0 +1,104 @@
+@use '../../../mixins' as *;
+
+$border-radius: 0.5em;
+$reactions-height: 2.25em;
+
+.container {
+  @include flex-display(row, flex-start, flex-start);
+
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  gap: 1.25em;
+  border-radius: $border-radius;
+  border: var(--bs-border);
+  transition: box-shadow 0.1s linear;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 2px #00000020;
+  }
+
+  .price {
+    position: absolute;
+    top: 0.6em;
+    left: 0.6em;
+    color: white;
+    font-weight: 700;
+    background-color: var(--gray-70);
+    padding: 0.1em 0.4em;
+    border-radius: 100em;
+  }
+
+  .image {
+    width: 12rem;
+    height: 100%;
+    border-radius: $border-radius 0 0 $border-radius;
+    object-fit: cover;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .infoContainer {
+    @include flex-display(column, space-between, flex-start);
+
+    width: 100%;
+    height: 100%;
+    padding: 0.75em;
+    padding-left: 0;
+
+    .details {
+      @include flex-display(column, flex-start, flex-start);
+    }
+
+    .name {
+      font-weight: 500;
+      margin-bottom: 0.25em;
+    }
+
+    .description {
+      width: 100%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reactions {
+      @include flex-display(row);
+
+      width: 100%;
+      height: $reactions-height;
+      gap: 0.5em;
+      flex-wrap: wrap;
+
+      .reactionBox {
+        @include flex-display(row);
+
+        height: 100%;
+        gap: 0.25em;
+        border: 1px solid var(--gray-20);
+        border-radius: 100em;
+        padding: 0.25em 0.75em 0.25em 0.5em;
+
+        &:hover {
+          // background-color: var(--layer-01);
+        }
+
+        .reaction {
+          height: 100%;
+
+          img {
+            width: auto;
+          }
+        }
+
+        .numUsers {
+          font-weight: 500;
+          margin-left: 0.25em;
+        }
+      }
+    }
+  }
+}

@@ -12,12 +12,6 @@ import RestaurantImage from '../../Restaurants/components/RestaurantImage'
 import ReactionBox from '../../User/components/ReactionBox'
 import TrendingPane from '../../Main/components/TrendingPane'
 
-// type FeedItemProps = {
-
-// }
-
-const FeedItem = (props: FeedPost) => {}
-
 const FeedPage = () => {
   const { feedItems } = useAppSelector(selectSessionData)
   const dispatch = useAppDispatch()

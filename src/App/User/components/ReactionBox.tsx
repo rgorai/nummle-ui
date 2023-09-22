@@ -15,6 +15,7 @@ import { submitReaction } from '../../../services/feedService'
 
 type Props = {
   tense: 'present' | 'past'
+  className?: string
 } & (
   | {
       userId: string
@@ -77,25 +78,27 @@ const ReactionBox = (props: Props) => {
   const onReactionChange = (newReactionRank: number) => {
     if (reaction?.rank !== newReactionRank && !isCurrOnly(props))
       submitReaction(props.orderId, props.itemId, newReactionRank)
-        .then(() => {
+        .then(({ data }) => {
           dispatch(
             updateReaction([
-              props.userId,
-              props.orderId,
-              props.itemId,
-              reactions[newReactionRank],
+              data.userId,
+              data.orderId,
+              data.itemId,
+              reactions[data.newReactionRank],
             ])
           )
         })
-        .catch(({ response }) =>
+        .catch(({ response }) => {
           console.error('submit reaction error', response)
-        )
+        })
   }
 
   return (
-    <div className={styles.reactionsWrapper}>
+    <div className={cx(props.className, styles.reactionsWrapper)}>
       {isCurrOnly(props) ? (
-        <div>{ReactionImage(props.reactionRank, true)}</div>
+        <div className={styles.currOnlyContainer}>
+          {ReactionImage(props.reactionRank, true)}
+        </div>
       ) : (
         <>
           <ToggleButtonGroup

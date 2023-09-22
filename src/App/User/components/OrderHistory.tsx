@@ -12,6 +12,7 @@ import {
 } from '../../../services/userService'
 import styles from '../styles/orderHistory.module.scss'
 import { useAuthInfo } from '../../../state/authContext'
+import { parseOrderData } from '../../../parsers/orders'
 import OrderListItem from './OrderListItem'
 
 // TODO: ADD PROP FOR PUBLIC/PRIVATE
@@ -34,12 +35,13 @@ const OrderHistory = ({ userId }: Props) => {
     (currUser: boolean) => {
       ;(currUser ? getCurrUserOrderHistory() : getPublicOrderHistory(userId))
         .then(({ data }) => {
-          dispatch(addOrderHistory([userId, data]))
-          console.log('order history', data)
+          dispatch(
+            addOrderHistory([userId, data.map((e) => parseOrderData(e))])
+          )
         })
         .catch(({ response }) => {
-          setPageError(response)
           console.error('get order history error', response)
+          setPageError(response)
         })
         .then(() => setLoading(false))
     },

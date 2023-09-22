@@ -5,10 +5,17 @@
 
 .cardContainer {
   text-decoration: none;
+  color: black;
+
+  &:hover .restaurantName {
+    text-decoration: underline;
+  }
 
   .restaurantImage {
     height: 10em;
     object-fit: cover;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .infoContainer {

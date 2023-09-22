@@ -32,16 +32,16 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
   )
 
   const followUser = useCallback(
-    (operation: 'follow' | 'unfollow', userId: string, otherUserId: string) => {
+    (operation: 'follow' | 'unfollow', otherUserId: string) => {
       setFollowLoading(true)
       followUnfollowUser(operation, otherUserId)
         .then(({ data }) => {
+          console.log(operation, 'request', data)
           dispatch(updateFollow([operation, ...data]))
-          console.log('follow request', data)
         })
         .catch(({ response }) => {
-          setError(true)
           console.error('error', response)
+          setError(true)
         })
         .then(() => setFollowLoading(false))
     },
@@ -50,11 +50,7 @@ const FollowButton = ({ followUserId, followUsername }: Props) => {
 
   const submitFollowUser = () => {
     if (authInfo.authenticated)
-      followUser(
-        displayFollowing ? 'unfollow' : 'follow',
-        authInfo.user_id,
-        followUserId
-      )
+      followUser(displayFollowing ? 'unfollow' : 'follow', followUserId)
   }
 
   return isCurrUser ? null : (
