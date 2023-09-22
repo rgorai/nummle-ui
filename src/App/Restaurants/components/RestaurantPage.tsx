@@ -116,11 +116,6 @@ const RestaurantPage = () => {
               </ul>
             </nav>
 
-            {(() => {
-              console.log('THIS', pageData)
-              return null
-            })()}
-
             <div className={styles.items}>
               {pageData.menu.map((e) => (
                 <section
