@@ -19,5 +19,5 @@
     "types": ["node"],
     "allowImportingTsExtensions": true
   },
-  "include": ["src", "../types", "types"]
+  "include": ["src", "types"]
 }
