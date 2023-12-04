@@ -16,10 +16,10 @@ import {
   selectSessionData,
 } from '../../../state/sessionDataSlice'
 import { useAuthInfo } from '../../../state/authContext'
-import { setDocumentTitle } from '../../../utils/misc'
 import OrderHistory from '../../User/components/OrderHistory'
 import FollowsModal from '../../User/components/FollowsModal'
 import FollowButton from '../../User/components/FollowButton'
+import { setDocumentTitle } from '../../../utils/strings'
 
 type Props = {
   getCurrUser?: true

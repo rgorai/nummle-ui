@@ -16,7 +16,7 @@ export const AuthProvider = (props: PropsWithChildren) => {
   const [authInfo, setAuthInfo] = useState(DEFAULT_STATE)
 
   const updateUserData: UpdateUserData = (_keychain, newValue) =>
-    setAuthInfo((prev: AuthResponse) =>
+    setAuthInfo((prev) =>
       setObjValueFromKeychain(prev, ['userData', ..._keychain], newValue)
     )
 

@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import { setDocumentTitle } from '../utils/misc'
+import { setDocumentTitle } from '../utils/strings'
 
 type Props = {
   pageTitle: string

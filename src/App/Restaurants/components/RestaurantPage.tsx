@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import cx from 'classnames'
 import { useQueryState } from 'react-router-use-location-state'
@@ -6,7 +6,6 @@ import {
   getMenuItemReactions,
   getRestaurantDetails,
 } from '../../../services/searchService'
-import { setDocumentTitle } from '../../../utils/misc'
 import styles from '../styles/restaurantPage.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../state/hooks'
 import {
@@ -15,7 +14,10 @@ import {
 } from '../../../state/sessionDataSlice'
 import PageLoader from '../../../Wrappers/PageLoader'
 import { parseTomTomRestaurant } from '../../../parsers/restaurants'
-import { transformTomTomPhoneNumber } from '../../../utils/strings'
+import {
+  setDocumentTitle,
+  transformTomTomPhoneNumber,
+} from '../../../utils/strings'
 import RestaurantImage from './RestaurantImage'
 import MenuListItem from './MenuListItem'
 
@@ -89,11 +91,13 @@ const RestaurantPage = () => {
 
             <div className={styles.detailsContainer}>
               <h1>{pageData.name}</h1>
-              <div className="text-muted">{`${pageData.freeFormAddress}${
-                pageData.phoneNumber
-                  ? ` • ${transformTomTomPhoneNumber(pageData.phoneNumber)}`
-                  : ''
-              }`}</div>
+              <div className="text-muted">
+                {`${pageData.freeFormAddress}${
+                  pageData.phoneNumber
+                    ? ` • ${transformTomTomPhoneNumber(pageData.phoneNumber)}`
+                    : ''
+                }`}
+              </div>
             </div>
           </div>
 

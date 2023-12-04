@@ -5,7 +5,7 @@ type Props<T> = {
   loading: boolean
   error: ServerError | null
   pageData: T
-  children: (pageData: Exclude<T, null>) => JSX.Element
+  children: (pageData: NonNullable<T>) => JSX.Element
 }
 
 // TODO: ADD ERROR HANDLING TO THIS
@@ -17,7 +17,7 @@ const PageLoader = <T,>({ loading, error, pageData, children }: Props<T>) =>
   ) : error ? (
     <ErrorPage {...error} />
   ) : pageData ? (
-    <>{children(pageData as Exclude<T, null>)}</>
+    <>{children(pageData)}</>
   ) : null
 
 export default PageLoader
