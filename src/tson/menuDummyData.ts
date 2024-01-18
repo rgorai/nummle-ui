@@ -6,6 +6,8 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'appetizer-1',
         name: 'Spinach Artichoke Dip',
         price: 8.99,
+        ingredients: "Parmesan Cheese, Romano Cheese, Garlic, Basil, Artichoke, Spinach",
+        allergens: "Dairy, Gluten",
         description: 'Creamy dip with fresh spinach and artichoke hearts.',
         imagePath:
           'https://lilluna.com/wp-content/uploads/2022/12/spinach-artichoke-dip3-resize-16.jpg',
@@ -14,6 +16,8 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'appetizer-2',
         name: 'Chicken Wings',
         price: 10.99,
+        ingredients: "Chicken",
+        allergens: "Poultry, Gluten",
         description: 'Crispy chicken wings with your choice of sauce.',
         imagePath:
           'https://www.tasteofhome.com/wp-content/uploads/2018/01/Crispy-Chicken-Wings-Appetizer_exps2596_BEA1449745D47A_RMS.jpg?fit=700%2C1024',
@@ -22,12 +26,16 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'appetizer-3',
         name: 'Mozzarella Sticks',
         price: 6.99,
+        ingredients: "Mozzerella Cheese, Breadcrumbs, Oil",
+        allergens: "Dairy, Gluten",
         imagePath:
           'https://www.spendwithpennies.com/wp-content/uploads/2013/10/Cheese-Sticks-SpendWithPennies-2-22.jpg',
       },
       {
         id: 'appetizer-4',
         name: 'Bruschetta',
+        ingredients: "Oil, Tomato, Garlic, Parmesan Cheese, French Bread, Balsamic Vinegar",
+        allergens: "Dairy, Gluten",
         price: 7.49,
         imagePath:
           'https://natashaskitchen.com/wp-content/uploads/2020/07/Tomato-Bruschetta-Recipe-7.jpg',
@@ -36,6 +44,8 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'appetizer-5',
         name: 'Potato Skins',
         price: 7.99,
+        ingredients: "Cheddar Cheese, Bacon, Chives, Butter, Sour Cream",
+        allergens: "Dairy",
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus nisl ut porttitor convallis. Aliquam eleifend efficitur est, eget venenatis turpis. Vivamus aliquam venenatis purus et euismod. Aenean nec eros enim. Vestibulum vestibulum rutrum placerat. Fusce dictum finibus ultrices. Pellentesque a molestie quam. Vivamus vel auctor quam.',
       },

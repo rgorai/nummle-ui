@@ -21,6 +21,16 @@ const MenuListItem = ({ info, reactions }: Props) => (
     <div className={styles.infoContainer}>
       <div className={styles.details}>
         <div className={styles.name}>{info.name}</div>
+        {info.ingredients && (
+          <div className={cx(styles.description, 'text-muted')}> 
+            Made with {info.ingredients}
+          </div>
+        )}
+        {info.allergens && (
+          <div className={cx(styles.description, 'text-muted')}> 
+            Allergens: {info.allergens}
+          </div>
+        )}
         {info.description && (
           <div className={cx(styles.description, 'text-muted')}>
             {info.description}

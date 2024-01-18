@@ -20,6 +20,9 @@ import {
 } from '../../../utils/strings'
 import RestaurantImage from './RestaurantImage'
 import MenuListItem from './MenuListItem'
+import { Modal } from 'react-bootstrap'
+import Button from 'react-bootstrap/esm/Button'
+
 
 // TODO: RETEST EVERYTHING AFTER IMPLEMENTING SEARCH FOR INDIVIDUAL RESTAURANT
 
@@ -33,6 +36,44 @@ const RestaurantPage = () => {
     'scrollTo',
     'hello'
   )
+  const [foodName, setFoodName] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [allergens, setAllergens] = useState("");
+  const [cost, setCost] = useState(0);
+  const [image, setImage] = useState("")
+  const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    // setFoodItem({})
+    setFoodName("")
+    setIngredients("")
+    setAllergens("")
+    setCost(0)
+    setImage("")
+  }, [])
+
+
+  function setFood(data: MenuListItem){
+    console.log(data)
+    setFoodName(data.name)
+    if(data.ingredients === undefined){
+      setIngredients("N/A")
+    }else{
+      setIngredients(data.ingredients)
+    }
+    if(data.allergens === undefined){
+      setAllergens("N/A")
+    }else{
+      setAllergens(data.allergens)
+    }
+    setCost(data.price)
+    if(data.imagePath){
+      setImage(data.imagePath)
+    }
+    setShowModal(true);
+    
+  }
+
   const navigate = useNavigate()
 
   const currRestaurant = restaurantId ? loadedRestaurants[restaurantId] : null
@@ -119,6 +160,36 @@ const RestaurantPage = () => {
                 ))}
               </ul>
             </nav>
+              {showModal && foodName && 
+              <Modal
+                className={styles.modalContainer}
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>{foodName}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className={styles.listContainer}>
+                    {image && <img src={image} alt={foodName} width="200" height="200" className={styles.modalContainer} />}
+                    <br/>
+                    ${cost}
+                    <br/>
+                    Ingredients: {ingredients}
+                    <br/>
+                    Allergens: {allergens}
+                    <br/>
+                    <br/>
+                    <Button onClick={()=>{
+                      alert("Added to cart")
+                      setShowModal(false)
+                    }}>Add to Cart</Button>   
+                  </div>
+               
+                </Modal.Body>
+              </Modal>
+              }
 
             <div className={styles.items}>
               {pageData.menu.map((e) => (
@@ -129,12 +200,14 @@ const RestaurantPage = () => {
                 >
                   <h2>{e.categoryName}</h2>
                   <div className={styles.itemsContainer}>
-                    {e.items.map((item) => (
-                      <MenuListItem
-                        info={item}
-                        reactions={pageData.menuReactions?.[item.id] ?? null}
-                        key={item.id}
-                      />
+                    {e.items.map((item, index) => (
+                      <div onClick={()=>{setFood(e.items[index])}}>
+                        <MenuListItem
+                          info={item}
+                          reactions={pageData.menuReactions?.[item.id] ?? null}
+                          key={item.id}
+                        />
+                      </div>
                     ))}
                   </div>
                 </section>
