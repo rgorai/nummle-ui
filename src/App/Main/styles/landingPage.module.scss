@@ -1,0 +1,25 @@
+.intro {
+  text-align: center;
+  padding-top: 20rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slogan {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.addressBox {
+  width: 50%;
+  margin: auto;
+  border-radius: 8px;
+  border-color: black;
+  border-style: solid;
+}
