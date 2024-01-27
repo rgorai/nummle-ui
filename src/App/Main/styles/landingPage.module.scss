@@ -1,25 +1,62 @@
+$dark-purple: rgb(118, 33, 203);
+
 .intro {
   text-align: center;
   padding-top: 20rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  // padding-left: 20%rem;
+  // padding-right: %rem;
+  padding-bottom: 20rem;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url('landingPageFoods.jpg');
+  background-size: 100rem;
+  background-position: center;
+  //background-color: #cccccc;
+}
+@media (min-width: 1800px) {
+  .intro {
+    background-size: 140rem;
+  }
 }
 
 .slogan {
   font-size: 2rem;
   line-height: 2rem;
   font-weight: bold;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
+  color: white;
+  margin-left: 15rem;
+  margin-right: 15rem;
+}
+
+.inputContainer {
 }
 
 .addressBox {
-  width: 50%;
+  width: 35%;
   margin: auto;
-  border-radius: 8px;
+  border-radius: 10px;
   border-color: black;
+  border-width: 1px;
   border-style: solid;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  text-align: center;
+}
+.addressButton {
+  color: white;
+  font-size: 1rem;
+  background-color: $dark-purple;
+  border: solid $dark-purple 1px;
+  border-radius: 10px;
+  margin-left: 1rem;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+}
+
+.underIntro {
+  padding-top: 10rem;
+  padding-bottom: 30rem;
+  text-align: center;
 }

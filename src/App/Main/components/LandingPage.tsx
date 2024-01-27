@@ -14,14 +14,18 @@ const LandingPage = () => {
         <div
           className={styles.slogan}
         >{`See what your friends and locals are saying right now about restaurants near you`}</div>
-        <input
-          type="text"
-          value={userInput}
-          onChange={handleInputChange}
-          placeholder="Enter delivery address"
-          className={styles.addressBox}
-        />
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            value={userInput}
+            onChange={handleInputChange}
+            placeholder="Enter delivery address"
+            className={styles.addressBox}
+          />
+          <button className={styles.addressButton}>Search</button>
+        </div>
       </div>
+      <div className={styles.underIntro}>NEW CONTENT</div>
     </>
   )
 }
