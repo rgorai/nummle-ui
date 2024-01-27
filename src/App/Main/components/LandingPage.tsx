@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { APP_NAME } from '../../../utils/env'
 import styles from '../styles/landingPage.module.scss'
-//import dietImg from '../components/diet.jpg'
+//import test from 'src/App/Main/components/diet.jpg'
 const LandingPage = () => {
   const [userInput, setUserInput] = useState('')
 
@@ -26,11 +26,13 @@ const LandingPage = () => {
           <button className={styles.addressButton}>Search</button>
         </div>
       </div>
+      <div className = {styles.imgBoxes}>
+        <div className= {styles.imgBox} id = {styles.box1}></div>
+        <div className= {styles.imgBox} id = {styles.box2}></div>
+        <div className= {styles.imgBox} id = {styles.box3}></div>
+      </div>
       <div className={styles.underIntro}>
-          <div className={styles.box}>
-            <img src= {'../components/diet.jpg'} />
-            Follow your diet
-            </div> 
+          <div className={styles.box}>Follow your diet</div> 
           <div className={styles.box}>Eat with friends</div> 
           <div className={styles.box}>Safe from allergens</div> 
       </div>

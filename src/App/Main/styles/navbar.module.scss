@@ -1,5 +1,5 @@
 @use '../../../mixins' as *;
-$dark-purple: rgb(118, 33, 203);
+$dark-purple: #8e44ad;
 
 .navWrapper {
   @include flex-display(row, space-between);
@@ -42,12 +42,12 @@ $dark-purple: rgb(118, 33, 203);
         color: white;
         padding: 10px 20px;
         text-decoration: none;
-        background-color: rgb(110, 96, 215);
+        background-color: #8e44ad;
         border-radius: 8px;
         transition: backgorund-color 0.3s ease;
 
         &:hover {
-          background-color: rgb(118, 33, 203);
+          background-color: #6c3483;
         }
       }
     }
