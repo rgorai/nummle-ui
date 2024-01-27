@@ -32,9 +32,9 @@ const LandingPage = () => {
         <div className= {styles.imgBox} id = {styles.box3}></div>
       </div>
       <div className={styles.underIntro}>
-          <div className={styles.box}>Follow your diet</div> 
-          <div className={styles.box}>Eat with friends</div> 
-          <div className={styles.box}>Safe from allergens</div> 
+          <div className={styles.box}>Follow your diet <div className={styles.boxIn}>Enjoy foods that fall in line with your diet</div></div> 
+          <div className={styles.box}>Eat with friends <div className={styles.boxIn}>See what your friends are enjoying</div></div> 
+          <div className={styles.box}>Safe from allergens<div className={styles.boxIn}>Be sure that what you order is safe to enjoy</div></div> 
       </div>
     </>
   )
