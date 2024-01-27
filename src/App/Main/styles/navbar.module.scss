@@ -42,12 +42,12 @@ $dark-purple: rgb(118, 33, 203);
         color: white;
         padding: 10px 20px;
         text-decoration: none;
-        background-color: rgb(118, 33, 203);
+        background-color: rgb(110, 96, 215);
         border-radius: 8px;
         transition: backgorund-color 0.3s ease;
 
         &:hover {
-          background-color: rgb(110, 96, 215);
+          background-color: rgb(118, 33, 203);
         }
       }
     }
