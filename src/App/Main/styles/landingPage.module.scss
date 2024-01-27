@@ -78,7 +78,17 @@ $dark-purple: rgb(118, 33, 203);
 }
 
 .underIntro {
-  padding-top: 10rem;
+  //padding-top: 10rem;
   padding-bottom: 30rem;
   text-align: center;
+  font-size: 20px;
+  display: flex;
+}
+
+.box {
+  flex: 1;
+  border: 8px solid black;
+  padding: 30px;
+  margin: 30px;
+  border-radius: 8px;
 }
