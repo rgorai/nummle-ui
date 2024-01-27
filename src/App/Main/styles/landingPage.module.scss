@@ -22,13 +22,30 @@ $dark-purple: rgb(118, 33, 203);
 }
 
 .slogan {
-  font-size: 2rem;
-  line-height: 2rem;
+  font-size: 2.1rem;
+  line-height: 2.25rem;
   font-weight: bold;
   padding-bottom: 2rem;
-  color: white;
+  color: black;
+  //text-shadow: 1px 1px white;
   margin-left: 15rem;
   margin-right: 15rem;
+}
+@media (min-width: 1500px) {
+  .slogan {
+    padding-top: 5rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
+  }
+}
+@media (min-width: 1800px) {
+  .slogan {
+    padding-top: 5rem;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    font-size: 2.4rem;
+    line-height: 2.5rem;
+  }
 }
 
 .inputContainer {
@@ -53,6 +70,11 @@ $dark-purple: rgb(118, 33, 203);
   border-radius: 10px;
   margin-left: 1rem;
   padding: 0.25rem 1rem 0.25rem 1rem;
+}
+@media (min-width: 1800px) {
+  .addressBox {
+    width: 25%;
+  }
 }
 
 .underIntro {

@@ -1,4 +1,5 @@
 @use '../../../mixins' as *;
+$dark-purple: rgb(118, 33, 203);
 
 .navWrapper {
   @include flex-display(row, space-between);
@@ -8,7 +9,8 @@
   height: var(--nav-height);
   // border-bottom: var(--border-01);
   padding: 0 2em;
-  background-color: var(--color-primary-main);
+  background-color: white;
+  border-bottom: 1px solid black;
   z-index: 100;
 
   .logoWrapper {

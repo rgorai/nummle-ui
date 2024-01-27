@@ -13,13 +13,13 @@ const LandingPage = () => {
       <div className={styles.intro}>
         <div
           className={styles.slogan}
-        >{`See what your friends and locals are saying right now about restaurants near you`}</div>
+        >{`See what your friends and locals are saying about restaurants near you`}</div>
         <div className={styles.inputContainer}>
           <input
             type="text"
             value={userInput}
             onChange={handleInputChange}
-            placeholder="Enter delivery address"
+            placeholder="Enter address here"
             className={styles.addressBox}
           />
           <button className={styles.addressButton}>Search</button>
