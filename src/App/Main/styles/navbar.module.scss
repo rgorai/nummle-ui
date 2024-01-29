@@ -9,8 +9,9 @@ $dark-purple: #8e44ad;
   height: var(--nav-height);
   // border-bottom: var(--border-01);
   padding: 0 2em;
+  //background-color: rgb(16, 16, 16);
   background-color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
   z-index: 100;
 
   .logoWrapper {
@@ -48,6 +49,7 @@ $dark-purple: #8e44ad;
 
         &:hover {
           background-color: #6c3483;
+          transition: 0.1s ease-in-out;
         }
       }
     }
