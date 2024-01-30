@@ -44,7 +44,6 @@ const RestaurantPage = () => {
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
-    // setFoodItem({})
     setFoodName("")
     setIngredients("")
     setAllergens("")
@@ -59,13 +58,17 @@ const RestaurantPage = () => {
     if(data.ingredients === undefined){
       setIngredients("N/A")
     }else{
-      setIngredients(data.ingredients)
+      const tempIngredients = data.ingredients.join(", ")
+      setIngredients(tempIngredients)
     }
+
     if(data.allergens === undefined){
       setAllergens("N/A")
     }else{
-      setAllergens(data.allergens)
+      const tempAllergens = data.allergens.join(", ")
+      setAllergens(tempAllergens)
     }
+
     setCost(data.price)
     if(data.imagePath){
       setImage(data.imagePath)
