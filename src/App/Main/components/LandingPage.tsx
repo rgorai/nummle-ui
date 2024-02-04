@@ -50,22 +50,65 @@ const LandingPage = () => {
         </div>
       </div>
       <div className={styles.aboutNummleContainer}>
-        <div className={styles.aboutNummleTitle}>About Nummle</div>
-        <div className={styles.aboutNummleInfo}>
-          Here at Nummle, our goal is to Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Excepturi nihil magnam repellendus corrupti labore.
-          Ipsum incidunt reprehenderit, dicta id rerum assumenda. Ratione quis
-          sint eos? Nemo rerum dolorum et nostrum. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Fugiat error iste quasi, officia ipsa
-          vel deleniti tempora molestias sed dignissimos illum excepturi saepe,
-          numquam tenetur laudantium accusantium in maiores quidem! Lorem ipsum
-          dolor sit amet, consectetur adipisicing elit. Voluptate modi esse
-          architecto laudantium dolor, voluptas error ipsa iusto! Magni ipsam
-          neque sequi ea, illum fugit unde aperiam quisquam vero beatae?
+        <div className={styles.aboutNummleBoxContainer}>
+          <div className={styles.aboutNummleTitle}>
+            Where Culinary Delights Meet Social Connections!
+          </div>
+          <div className={styles.aboutNummleInfo}>
+            Discover a world of culinary wonders and social connections like
+            never before with Nummle - your ultimate food delivery app with a
+            twist! We&apos;re not just about bringing delicious meals to your
+            doorstep, we&apos;re here to revolutionize the way you experience
+            and share your food journey.
+          </div>
+        </div>
+        <div className={styles.aboutNummleBoxContainer}>
+          <div className={styles.aboutNummleTitle}>
+            Personalized for Your Palate
+          </div>
+          <div className={styles.aboutNummleInfo}>
+            We understand that everyone&apos;s dietary journey is unique. Tailor
+            your Nummle experience to match all of your preferences, including
+            keto, vegan, gluten-free, allergy-friendly and more. Our app is your
+            personalized food haven, making it easy for you to find meals that
+            fit your lifestyle.
+          </div>
+        </div>
+        <div className={styles.aboutNummleBoxContainer}>
+          <div className={styles.aboutNummleTitle}>
+            Connect with Local Foodies
+          </div>
+          <div className={styles.aboutNummleInfo}>
+            Food is better when shared with friends! Connect with your foodie
+            tribe on Nummle&apos;s social platform. Share your favorite dishes,
+            exchange reviews, and stay in the loop with what your friends are
+            devouring. From mouth-watering snapshots to insightful restaurant
+            recommendations, your culinary circle just got a whole lot tastier.
+          </div>
+        </div>
+        <div className={styles.aboutNummleBoxContainer}>
+          <div className={styles.aboutNummleTitle}>
+            Uncover Hidden Local Gems
+          </div>
+          <div className={styles.aboutNummleInfo}>
+            From neighborhood favorites to exotic delicacies, Nummle brings the
+            world to your table. Explore local food scenes, try trending dishes,
+            and open your palate to a world of diverse tastes. The journey
+            begins in your city and extends to every corner of the globe.
+          </div>
         </div>
       </div>
       <div className={styles.footerContainer}>
-        <div className={styles.footerInfo}>FOOTER HERE</div>
+        <div className={styles.footerSides} id={styles.footerLeft}>
+          <div className={styles.footerNummle}>Nummle</div>
+          <div className={styles.footerYear}>&#169; Nummle 2024</div>
+        </div>
+        <div className={styles.footerSides} id={styles.footerRight}>
+          <li className={styles.footerList}>Contact Us</li>
+          <li className={styles.footerList}>Sign Up</li>
+          <li className={styles.footerList}>Locations</li>
+          <li className={styles.footerList}>Restaurants</li>
+        </div>
       </div>
     </>
   )

@@ -178,22 +178,68 @@ $dark-purple: #8e44ad;
   max-width: 40rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: space-around;
+  gap: 3rem;
   margin: 0 auto;
+}
+.aboutNummleBoxContainer {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 6rem;
 }
 .aboutNummleTitle {
   font-size: 30px;
   font-weight: 700;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+.aboutNummleInfo {
+  font-size: 17px;
 }
 
 .footerContainer {
   border-top: 1px solid rgba(128, 128, 128, 0.2);
-  background-color: rgb(236, 236, 236);
-  padding-top: 10rem;
-  padding-bottom: 1rem;
+  background-color: rgb(247, 247, 247);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  //align-items: center;
+  justify-content: center;
+  gap: 20rem;
+}
+
+#footerLeft {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  justify-content: center;
+  padding: 1rem 2rem 1rem 2rem;
+}
+.footerNummle {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.footerYear {
+  color: gray;
+}
+#footerRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  //padding: 1rem 2rem 1rem 2rem;
+  //align-items: left;
+}
+.footerList {
+  list-style: none;
+  //padding-bottom: 1rem;
+}
+.footerList:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: $dark-purple;
+  transition: 0.1s all ease-in-out;
 }
