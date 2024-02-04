@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { APP_NAME } from '../../../utils/env'
 import styles from '../styles/landingPage.module.scss'
 //import test from 'src/App/Main/components/diet.jpg'
+import { ReactTyped } from 'react-typed'
+
 const LandingPage = () => {
   const [userInput, setUserInput] = useState('')
 
@@ -12,9 +14,22 @@ const LandingPage = () => {
   return (
     <>
       <div className={styles.intro}>
-        <div
-          className={styles.slogan}
-        >{`See what your friends and locals are saying about restaurants near you`}</div>
+        <div className={styles.slogan}>
+          {' '}
+          <ReactTyped
+            strings={[
+              'Connect, Share, Savor',
+              'Where health meets happiness',
+              'Shared plates, shared stories',
+              'Your healthful journey starts here!',
+              'Eat well, live well',
+              'Your diet, your way',
+            ]}
+            typeSpeed={60}
+            loop
+            backSpeed={20}
+          />
+        </div>
         <div className={styles.inputContainer}>
           <input
             type="text"

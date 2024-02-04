@@ -23,14 +23,16 @@ $dark-purple: #8e44ad;
 
 .slogan {
   font-size: 2.1rem;
+  height: 60px;
   line-height: 2.25rem;
   font-weight: bold;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   color: black;
   //text-shadow: 1px 1px white;
   margin-left: 15rem;
   margin-right: 15rem;
 }
+
 @media (min-width: 1500px) {
   .slogan {
     padding-top: 5rem;
