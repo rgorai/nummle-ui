@@ -46,9 +46,8 @@ const RestaurantPage = () => {
 
         let reactions: MenuReactions | null
         try {
-          const { data: reactionsData } = await getMenuItemReactions(
-            _restaurantId
-          )
+          const { data: reactionsData } =
+            await getMenuItemReactions(_restaurantId)
           reactions = reactionsData
         } catch (err) {
           reactions = null
