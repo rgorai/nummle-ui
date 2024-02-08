@@ -4,6 +4,8 @@ type UserData = {
   birthdate: string
   gender: string | null
   nationalities: string[]
+  allergens: string[]
+  diets: string[]
   email: string
   username: string
   password: string
@@ -28,6 +30,8 @@ type UserRegistrationInfo = Pick<
   | 'birthdate'
   | 'gender'
   | 'nationalities'
+  | 'allergens'
+  | 'diets'
   | 'email'
   | 'username'
   | 'password'
