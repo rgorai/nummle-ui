@@ -194,3 +194,27 @@ export const nationalitiesOptions = [
   'Zambian',
   'Zimbabwean',
 ]
+
+export const allergiesOptions = [
+  'Milk',
+  'Eggs',
+  'Fish',
+  'Crustacean',
+  'Tree Nuts',
+  'Peanuts',
+  'Wheat',
+  'Soybeans',
+  'Sesame'
+]
+
+export const dietsOptions = [
+  'Mediterranean Diet',
+  'DASH Diet',
+  'Keto Diet',
+  'Atkins Diet',
+  'Vegan Diet',
+  'Weight Watchers Diet',
+  'Paleolithic Diet',
+  'Alkaline Diet',
+  'Pescatarian Diet'
+]

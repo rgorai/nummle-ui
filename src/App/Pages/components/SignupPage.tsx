@@ -7,7 +7,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { reduceFormSpecs } from '../../../utils/forms'
 import { signup } from '../../../services/authService'
 import styles from '../styles/formPage.module.scss'
-import { nationalitiesOptions } from '../../../utils/optionValues'
+import { nationalitiesOptions, allergiesOptions, dietsOptions } from '../../../utils/optionValues'
 
 // TODO: ADD FORM VALIDATION
 
@@ -52,6 +52,26 @@ const SIGNUP_SPECS: SignupFormSpecs = {
       value: e.toLowerCase(),
     })),
     props: { multiple: true },
+  },
+  allergens: {
+    label: 'Allergens',
+    type: 'select',
+    defaultValue: [],
+    options: allergiesOptions.map((e) => ({
+      label: e,
+      value: e.toLowerCase(),
+    })),
+    props: { multiple: true},
+  },
+  diets: {
+    label: 'Diets',
+    type: 'select',
+    defaultValue: [],
+    options: dietsOptions.map((e) => ({
+      label: e,
+      value: e.toLowerCase(),
+    })),
+    props: { multiple: true},
   },
   email: {
     label: 'Email',
@@ -170,6 +190,7 @@ const SignupPage = () => {
                   if (currSpecs.type === 'select') {
                     return (
                       <div className={styles.selectContainer}>
+                        <Form.Label>{currSpecs.label}</Form.Label>
                         <Select
                           options={currSpecs.options}
                           isMulti={currSpecs.props?.multiple}
