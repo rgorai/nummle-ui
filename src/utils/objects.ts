@@ -5,8 +5,8 @@ export const getObjValueFromKeychain = (
   !source
     ? undefined
     : keychain.length === 0
-    ? source
-    : getObjValueFromKeychain(source[keychain[0]], keychain.slice(1))
+      ? source
+      : getObjValueFromKeychain(source[keychain[0]], keychain.slice(1))
 
 // returns new object with set value
 export const setObjValueFromKeychain = (

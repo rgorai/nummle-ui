@@ -37,8 +37,8 @@ const ProfilePage = ({ getCurrUser }: Props) => {
     getCurrUser && authInfo.authenticated
       ? loadedProfiles[authInfo.username]
       : username
-      ? loadedProfiles[username]
-      : null
+        ? loadedProfiles[username]
+        : null
 
   const getProfileData = useCallback(
     (currUser: true | undefined) => {

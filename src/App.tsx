@@ -68,7 +68,7 @@ const APP_CONTENT: AppContent = [
     path: '/users/:username',
     element: <ProfilePage />,
     ensureAuthenticated: true,
-    overrideDocumentTitle: true,
+    bypassDocumentTitle: true,
   },
   {
     label: 'Support',
@@ -88,7 +88,7 @@ const APP_CONTENT: AppContent = [
     path: '/restaurants/:restaurantId',
     element: <RestaurantPage />,
     ensureAuthenticated: null,
-    overrideDocumentTitle: true,
+    bypassDocumentTitle: true,
   },
 ]
 
@@ -111,7 +111,7 @@ const App = () => {
                   element={
                     <DocumentTitleWrapper
                       pageTitle={e.label}
-                      bypass={e.overrideDocumentTitle}
+                      bypass={e.bypassDocumentTitle}
                     />
                   }
                   key={e.path}
