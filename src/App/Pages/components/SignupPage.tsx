@@ -7,7 +7,11 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { reduceFormSpecs } from '../../../utils/forms'
 import { signup } from '../../../services/authService'
 import styles from '../styles/formPage.module.scss'
-import { nationalitiesOptions, allergiesOptions, dietsOptions } from '../../../utils/optionValues'
+import {
+  nationalitiesOptions,
+  allergiesOptions,
+  dietsOptions,
+} from '../../../utils/optionValues'
 
 // TODO: ADD FORM VALIDATION
 
@@ -61,7 +65,7 @@ const SIGNUP_SPECS: SignupFormSpecs = {
       label: e,
       value: e.toLowerCase(),
     })),
-    props: { multiple: true},
+    props: { multiple: true },
   },
   diets: {
     label: 'Diets',
@@ -71,7 +75,7 @@ const SIGNUP_SPECS: SignupFormSpecs = {
       label: e,
       value: e.toLowerCase(),
     })),
-    props: { multiple: true},
+    props: { multiple: true },
   },
   email: {
     label: 'Email',

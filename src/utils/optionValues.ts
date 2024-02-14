@@ -204,7 +204,7 @@ export const allergiesOptions = [
   'Peanuts',
   'Wheat',
   'Soybeans',
-  'Sesame'
+  'Sesame',
 ]
 
 export const dietsOptions = [
@@ -216,5 +216,5 @@ export const dietsOptions = [
   'Weight Watchers Diet',
   'Paleolithic Diet',
   'Alkaline Diet',
-  'Pescatarian Diet'
+  'Pescatarian Diet',
 ]
