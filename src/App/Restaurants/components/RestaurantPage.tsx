@@ -21,6 +21,7 @@ import {
 import RestaurantImage from './RestaurantImage'
 import MenuListItem from './MenuListItem'
 
+
 // TODO: RETEST EVERYTHING AFTER IMPLEMENTING SEARCH FOR INDIVIDUAL RESTAURANT
 
 const RestaurantPage = () => {
@@ -33,6 +34,7 @@ const RestaurantPage = () => {
     'scrollTo',
     'hello'
   )
+
   const navigate = useNavigate()
 
   const currRestaurant = restaurantId ? loadedRestaurants[restaurantId] : null
@@ -118,7 +120,6 @@ const RestaurantPage = () => {
                 ))}
               </ul>
             </nav>
-
             <div className={styles.items}>
               {pageData.menu.map((e) => (
                 <section
@@ -128,12 +129,12 @@ const RestaurantPage = () => {
                 >
                   <h2>{e.categoryName}</h2>
                   <div className={styles.itemsContainer}>
-                    {e.items.map((item) => (
-                      <MenuListItem
-                        info={item}
-                        reactions={pageData.menuReactions?.[item.id] ?? null}
-                        key={item.id}
-                      />
+                    {e.items.map((item, index) => (
+                        <MenuListItem
+                          info={item}
+                          reactions={pageData.menuReactions?.[item.id] ?? null}
+                          key={item.id}
+                        />
                     ))}
                   </div>
                 </section>
