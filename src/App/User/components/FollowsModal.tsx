@@ -25,6 +25,10 @@ type Props = {
 // follows load to commence on button click, and maybe
 // even staggering number of follows loaded at a time
 
+// TODO: for followings, when un-following a user, let the item
+// stay until the user clicks off the modal in case they want to
+// re-follow that user
+
 const FollowsModal = (props: Props) => {
   const { authInfo } = useAuthInfo()
   const { userFollowers, userFollowings } = useAppSelector(selectSessionData)

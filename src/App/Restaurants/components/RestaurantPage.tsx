@@ -20,10 +20,13 @@ import {
   setDocumentTitle,
   transformTomTomPhoneNumber,
 } from '../../../utils/strings'
+import NummleImage from '../../Main/components/NummleImage'
 import RestaurantImage from './RestaurantImage'
 import MenuListItem from './MenuListItem'
 
 // TODO: RETEST EVERYTHING AFTER IMPLEMENTING SEARCH FOR INDIVIDUAL RESTAURANT
+
+// TODO: add quantity UI/UX in menu item modal
 
 const RestaurantPage = () => {
   const { loadedRestaurants } = useAppSelector(selectSessionData)
@@ -95,38 +98,53 @@ const RestaurantPage = () => {
                 <Modal.Header closeButton>
                   <Modal.Title>{currSelectedMenuItem.name}</Modal.Title>
                 </Modal.Header>
+
                 <Modal.Body>
                   <div className={styles.listContainer}>
-                    {currSelectedMenuItem.imagePath && (
-                      <img
-                        src={currSelectedMenuItem.imagePath}
-                        alt={currSelectedMenuItem.name}
-                        width="200"
-                        height="200"
-                        className={styles.modalContainer}
-                      />
-                    )}
-                    <br />${currSelectedMenuItem.price}
-                    <br />
-                    Ingredients: {currSelectedMenuItem.ingredients}
-                    <br />
-                    Allergens: {currSelectedMenuItem.allergens}
-                    <br />
-                    <br />
-                    <Button
-                      onClick={() => {
-                        alert(`Added ${currSelectedMenuItem.name} to cart`)
-                        // setNeedReload(true);
-                        setCurrSelectedMenuListItem(null)
-                      }}
-                    >
-                      Add to Cart
-                    </Button>
+                    <NummleImage
+                      className={styles.modalImage}
+                      src={currSelectedMenuItem.imagePath}
+                      alt={currSelectedMenuItem.name}
+                    />
+
+                    <div className={styles.modalBody}>
+                      {currSelectedMenuItem.description && (
+                        <div className="mt-2 mb-4">
+                          {currSelectedMenuItem.description}
+                        </div>
+                      )}
+
+                      <div className="mb-2">
+                        <strong>{`Ingredients: `}</strong>
+                        {currSelectedMenuItem.ingredients?.join(', ') ??
+                          'Not provided'}
+                      </div>
+
+                      <div>
+                        <strong>{`Allergens: `}</strong>
+                        {currSelectedMenuItem.allergens?.join(', ') ??
+                          'Not provided'}
+                      </div>
+                    </div>
+
+                    <div className={styles.cartButtonContainer}>
+                      <div>{`$${currSelectedMenuItem.price}`}</div>
+
+                      <Button
+                        onClick={() => {
+                          alert(`Added ${currSelectedMenuItem.name} to cart`)
+                          setCurrSelectedMenuListItem(null)
+                        }}
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
                   </div>
                 </Modal.Body>
               </>
             )}
           </Modal>
+
           <div className={styles.pageContainer}>
             <div className={styles.headerContainer}>
               <RestaurantImage
@@ -150,34 +168,36 @@ const RestaurantPage = () => {
             <div className={styles.menuContainer}>
               <nav className={styles.sidebar}>
                 <ul>
-                  {pageData.menu.map((e) => (
+                  {pageData.menu.map((category) => (
                     <li
                       className={cx('text-muted', styles.sidebarLink)}
                       onClick={() => {
                         // navigate(`#${encodeURIComponent(e.categoryName)}`)
-                        setScrollTo(encodeURIComponent(e.categoryName))
+                        setScrollTo(encodeURIComponent(category.categoryName))
                         console.log(
                           'clicked',
-                          encodeURIComponent(e.categoryName)
+                          encodeURIComponent(category.categoryName)
                         )
                       }}
-                      key={e.categoryName}
+                      key={category.categoryName}
                     >
-                      {e.categoryName}
+                      {category.categoryName}
                     </li>
                   ))}
                 </ul>
               </nav>
+
               <div className={styles.items}>
-                {pageData.menu.map((e) => (
+                {pageData.menu.map((category) => (
                   <section
-                    id={e.categoryName}
+                    id={category.categoryName}
                     className={styles.categoryContainer}
-                    key={e.categoryName}
+                    key={category.categoryName}
                   >
-                    <h2>{e.categoryName}</h2>
+                    <h2>{category.categoryName}</h2>
+
                     <div className={styles.itemsContainer}>
-                      {e.items.map((item) => (
+                      {category.items.map((item) => (
                         <div
                           onClick={() => setCurrSelectedMenuListItem(item)}
                           key={item.id}

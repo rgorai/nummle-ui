@@ -1,7 +1,4 @@
 import cx from 'classnames'
-import { useState, useEffect } from 'react'
-import Modal from 'react-bootstrap/esm/Modal'
-import Button from 'react-bootstrap/esm/Button'
 import NummleImage from '../../Main/components/NummleImage'
 import ReactionBox from '../../User/components/ReactionBox'
 import styles from '../styles/menuItem.module.scss'
@@ -10,6 +7,7 @@ type Props = {
   info: MenuListItem
   reactions: MenuItemReactions | null
 }
+
 const MenuListItem = ({ info, reactions }: Props) => (
   <div id={info.id} className={styles.container}>
     <div className={styles.price}>{`$${info.price}`}</div>
@@ -23,23 +21,25 @@ const MenuListItem = ({ info, reactions }: Props) => (
     <div className={styles.infoContainer}>
       <div className={styles.details}>
         <div className={styles.name}>{info.name}</div>
-        {info.ingredients && (
-          <div className={cx(styles.description, 'text-muted')}>
-            Made with {info.ingredients.join(', ')}
-          </div>
-        )}
-        {info.allergens && (
-          <div className={cx(styles.description, 'text-muted')}>
-            Allergens: {info.allergens.join(', ')}
-          </div>
-        )}
+
         {info.description && (
           <div className={cx(styles.description, 'text-muted')}>
             {info.description}
           </div>
         )}
+
+        {/* {info.ingredients && (
+          <div className={cx(styles.description, 'text-muted')}>
+            {`Ingredients: ${info.ingredients.join(', ')}`}
+          </div>
+        )}
+
+        {info.allergens && (
+          <div className={cx(styles.description, 'text-muted')}>
+            {`Allergens: ${info.allergens.join(', ')}`}
+          </div>
+        )} */}
       </div>
-      <div></div>
 
       {reactions && (
         <div className={styles.reactions}>
