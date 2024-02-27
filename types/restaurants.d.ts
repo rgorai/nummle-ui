@@ -37,7 +37,7 @@ type MenuListItem = {
   name: string
   price: number
   ingredients?: string[]
-  allergens?: string[]
+  allergens: string[]
   description?: string
   imagePath?: string
 }

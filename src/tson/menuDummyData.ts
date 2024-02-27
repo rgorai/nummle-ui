@@ -164,6 +164,7 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'beverage-1',
         name: 'Soft Drinks',
         price: 2.49,
+        allergens: ['None'],
         description: 'Assorted soft drinks and sodas.',
         imagePath:
           'https://cdn.britannica.com/35/122035-050-89905EFE/bottles-polyethylene-terephthalate.jpg',
@@ -172,6 +173,7 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'beverage-2',
         name: 'Iced Tea',
         price: 2.99,
+        allergens: ['None'],
         description: 'Refreshing iced tea with a hint of lemon.',
         imagePath:
           'https://natashaskitchen.com/wp-content/uploads/2021/07/Iced-Tea-3-1.jpg',
@@ -180,12 +182,14 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'beverage-3',
         name: 'Lemonade',
         price: 2.99,
+        allergens: ['None'],
         imagePath:
           'https://www.simplyrecipes.com/thmb/FRO32gZ8AbLrsCz-oz7HvN8i6fw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Perfect-Lemonade-LEAD-06-B-a488322e63604cd6a1442de661722553.jpg',
       },
       {
         id: 'beverage-4',
         name: 'Coffee',
+        allergens: ['None'],
         price: 1.99,
       },
       {
@@ -193,12 +197,14 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Mango Smoothie',
         price: 4.49,
         ingredients: ['Mango', 'banana'],
+        allergens: ['None'],
         imagePath:
           'https://www.dinneratthezoo.com/wp-content/uploads/2018/05/mango-smoothie-2.jpg',
       },
       {
         id: 'beverage-6',
         name: 'Mineral Water',
+        allergens: ['None'],
         price: 1.99,
       },
     ],
