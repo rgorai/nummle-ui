@@ -3,6 +3,15 @@
 $border-radius: 0.5em;
 $reactions-height: 2em;
 
+.containsAllergens {
+  outline: 4px solid var(--warning);
+  outline-offset: 3px;
+}
+
+.allergenTooltip {
+  @include tooltip-color(top, var(--warning), black);
+}
+
 .container {
   @include flex-display(row, flex-start, flex-start);
 
@@ -54,8 +63,18 @@ $reactions-height: 2em;
     }
 
     .name {
+      @include flex-display(row);
+
       font-weight: 500;
       margin-bottom: 0.5em;
+      gap: 0.5em;
+
+      svg {
+        $side: 1.25em;
+        width: $side;
+        height: $side;
+        color: var(--warning-dark);
+      }
     }
 
     .description {

@@ -7,22 +7,26 @@ const DEFAULT_STATE: AuthResponse = JSON.parse(
 
 const authContext = createContext<any>(DEFAULT_STATE)
 
-type UpdateUserData = (
-  keychain: keyof UserProfilePrivate | [keyof UserProfilePrivate, ...string[]],
-  newValue: any
-) => void
+// type UpdateUserData = (
+//   keychain: keyof UserProfilePrivate | [keyof UserProfilePrivate, ...string[]],
+//   newValue: any
+// ) => void
 
 export const AuthProvider = (props: PropsWithChildren) => {
   const [authInfo, setAuthInfo] = useState(DEFAULT_STATE)
 
-  const updateUserData: UpdateUserData = (_keychain, newValue) =>
-    setAuthInfo((prev) =>
-      setObjValueFromKeychain(prev, ['userData', ..._keychain], newValue)
-    )
+  // const updateUserData: UpdateUserData = (_keychain, newValue) =>
+  //   setAuthInfo((prev) =>
+  //     setObjValueFromKeychain(prev, ['userData', ..._keychain], newValue)
+  //   )
 
   return (
     <authContext.Provider
-      value={{ authInfo, setAuthInfo, updateUserData }}
+      value={{
+        authInfo,
+        setAuthInfo,
+        // updateUserData
+      }}
       {...props}
     />
   )
@@ -31,5 +35,5 @@ export const AuthProvider = (props: PropsWithChildren) => {
 export const useAuthInfo = (): {
   authInfo: AuthResponse
   setAuthInfo: React.Dispatch<React.SetStateAction<AuthResponse>>
-  updateUserData: UpdateUserData
+  // updateUserData: UpdateUserData
 } => useContext(authContext)

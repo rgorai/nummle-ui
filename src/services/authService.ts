@@ -34,6 +34,7 @@ export const authHeader = () => {
 }
 
 type AuthProps = [userId: false] | [userId: string, username: string]
+
 export const authenticateUser = (...[userId, username]: AuthProps) =>
   axios.get<AuthResponse>(`/api/auth/isAuthenticated/${userId}/${username}`, {
     headers: authHeader(),

@@ -42,26 +42,31 @@ const TrendingPane = () => {
         )
   }, [clientLocation, dispatch, trendingDishes])
 
+  const trendingTypes: { name: string; key: keyof TrendingDishes }[] = [
+    { name: 'Friends', key: 'followingsOrdersSorted' },
+    { name: 'Everyone', key: 'allOrdersSorted' },
+  ]
+
   return (
     <div className={styles.container}>
       <h1>Trending on {CURR_DAY_STR}s</h1>
 
-      {(
-        [
-          { name: 'Friends', key: 'followingsOrdersSorted' },
-          { name: 'Everyone', key: 'allOrdersSorted' },
-        ] as { name: string; key: keyof TrendingDishes }[]
-      ).map((e, i) => (
-        <Fragment key={i}>
-          <h2>{e.name}</h2>
-          <div className={styles.itemsContainer}>
-            {trendingDishes &&
-              trendingDishes[e.key].map((dish, j) => (
+      {clientLocation ? (
+        trendingTypes.map((e, i) => (
+          <Fragment key={i}>
+            <h2>{e.name}</h2>
+            <div className={styles.itemsContainer}>
+              {trendingDishes?.[e.key].map((dish, j) => (
                 <TrendingDishItem itemInfo={dish} key={j} />
               ))}
-          </div>
-        </Fragment>
-      ))}
+            </div>
+          </Fragment>
+        ))
+      ) : (
+        <div className="mt-4" style={{ fontStyle: 'italic' }}>
+          No location provided.
+        </div>
+      )}
     </div>
   )
 }

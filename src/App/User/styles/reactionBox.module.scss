@@ -30,7 +30,7 @@
 }
 
 .noReactionTooltip {
-  @include tooltip-color(var(--warning), black);
+  @include tooltip-color(right, var(--warning), black);
 }
 
 .reactionsContainer {

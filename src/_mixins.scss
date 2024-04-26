@@ -15,9 +15,16 @@
   align-items: $alignment;
 }
 
-@mixin tooltip-color($color, $text-color) {
-  :global .tooltip-arrow::before {
-    border-right-color: $color;
+@mixin tooltip-color($border-side, $color, $text-color) {
+  $directions: top, right, bottom, left;
+
+  @if index($directions, $border-side) {
+    $index: index($directions, $border-side);
+    $border-property: nth($directions, $index);
+
+    :global .tooltip-arrow::before {
+      border-#{$border-property}-color: $color;
+    }
   }
 
   :global .tooltip-inner {

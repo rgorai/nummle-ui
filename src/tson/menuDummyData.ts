@@ -1,3 +1,6 @@
+import { getRandomElements } from '../utils/arrays'
+import { allergiesOptions } from '../utils/optionValues'
+
 export const dummyMenuData: RestaurantMenu = [
   {
     categoryName: 'Appetizers',
@@ -14,7 +17,6 @@ export const dummyMenuData: RestaurantMenu = [
           'Artichoke',
           'Spinach',
         ],
-        allergens: ['Dairy', 'Gluten'],
         description: 'Creamy dip with fresh spinach and artichoke hearts.',
         imagePath:
           'https://lilluna.com/wp-content/uploads/2022/12/spinach-artichoke-dip3-resize-16.jpg',
@@ -24,7 +26,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Chicken Wings',
         price: 10.99,
         ingredients: ['Chicken'],
-        allergens: ['Poultry', 'Gluten'],
         description: 'Crispy chicken wings with your choice of sauce.',
         imagePath:
           'https://www.tasteofhome.com/wp-content/uploads/2018/01/Crispy-Chicken-Wings-Appetizer_exps2596_BEA1449745D47A_RMS.jpg?fit=700%2C1024',
@@ -34,7 +35,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Mozzarella Sticks',
         price: 6.99,
         ingredients: ['Mozzerella Cheese', 'Breadcrumbs', 'Oil'],
-        allergens: ['Dairy', 'Gluten'],
         imagePath:
           'https://www.spendwithpennies.com/wp-content/uploads/2013/10/Cheese-Sticks-SpendWithPennies-2-22.jpg',
       },
@@ -49,7 +49,6 @@ export const dummyMenuData: RestaurantMenu = [
           'French Bread',
           'Balsamic Vinegar',
         ],
-        allergens: ['Dairy', 'Gluten'],
         price: 7.49,
         imagePath:
           'https://natashaskitchen.com/wp-content/uploads/2020/07/Tomato-Bruschetta-Recipe-7.jpg',
@@ -65,7 +64,6 @@ export const dummyMenuData: RestaurantMenu = [
           'Butter',
           'Sour Cream',
         ],
-        allergens: ['Dairy'],
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus nisl ut porttitor convallis. Aliquam eleifend efficitur est, eget venenatis turpis. Vivamus aliquam venenatis purus et euismod. Aenean nec eros enim. Vestibulum vestibulum rutrum placerat. Fusce dictum finibus ultrices. Pellentesque a molestie quam. Vivamus vel auctor quam.',
       },
@@ -84,7 +82,6 @@ export const dummyMenuData: RestaurantMenu = [
           'mashed potatoes',
           'herbs',
         ],
-        allergens: ['None'],
         description: 'Juicy sirloin steak cooked to perfection.',
         imagePath:
           'https://www.cookingclassy.com/wp-content/uploads/2022/07/grilled-steak-15.jpg',
@@ -101,7 +98,6 @@ export const dummyMenuData: RestaurantMenu = [
           'carrots',
           'herbs',
         ],
-        allergens: ['None'],
         description: 'Herb-infused roasted chicken served with vegetables.',
         imagePath:
           'https://www.foodandwine.com/thmb/RzOlfEjnolhLOZDYGIcGLpz5aJw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Zuni-Chicken-FT-RECIPE0323-b8ac598b9bab4db5b492099f008dae66.jpg',
@@ -111,7 +107,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Salmon Fillet',
         price: 16.99,
         ingredients: ['Salmon', 'yams', 'asparagus'],
-        allergens: ['None'],
         imagePath:
           'https://www.cookingclassy.com/wp-content/uploads/2017/02/skillet-seared-salmon-2.jpg',
       },
@@ -130,13 +125,11 @@ export const dummyMenuData: RestaurantMenu = [
           'soy sauce',
           'sesame oil',
         ],
-        allergens: ['Tree nuts'],
       },
       {
         id: 'main-course-5',
         name: 'Pasta Carbonara',
         ingredients: ['Bacon', 'garlic', 'spaghetti', 'parmesan', 'eggs'],
-        allergens: ['Dairy'],
         price: 13.99,
       },
       {
@@ -151,7 +144,6 @@ export const dummyMenuData: RestaurantMenu = [
           'sesame seed bun',
           'french fries',
         ],
-        allergens: ['Nuts', 'Gluten'],
         imagePath:
           'https://res.cloudinary.com/sagacity/image/upload/c_crop,h_3456,w_5184,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/superdeluxe_owgtql.jpg',
       },
@@ -211,7 +203,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Chocolate Cake',
         price: 6.99,
         ingredients: ['Flour', 'sugar', 'eggs', 'milk', 'cocoa'],
-        allergens: ['Dairy'],
         description: 'Decadent chocolate cake with layers of rich frosting.',
         imagePath:
           'https://www.cookingclassy.com/wp-content/uploads/2022/04/easy-chocolate-cake-2.jpg',
@@ -221,7 +212,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Cheesecake',
         price: 7.49,
         ingredients: ['Cream cheese', 'eggs', 'sugar', 'graham crackers'],
-        allergens: ['Dairy', 'Gluten'],
         description:
           'Classic New York-style cheesecake with a graham cracker crust.',
         imagePath:
@@ -237,7 +227,6 @@ export const dummyMenuData: RestaurantMenu = [
           'vanilla custard',
           'shortbread',
         ],
-        allergens: ['Dairy', 'Gluten'],
         price: 5.99,
       },
       {
@@ -249,7 +238,6 @@ export const dummyMenuData: RestaurantMenu = [
           'mascarpone cream',
           'cocoa powder',
         ],
-        allergens: ['Dairy', 'Gluten'],
         price: 8.99,
         imagePath:
           'https://sallysbakingaddiction.com/wp-content/uploads/2019/06/Tiramisu-6.jpg',
@@ -265,7 +253,6 @@ export const dummyMenuData: RestaurantMenu = [
           'whipped cream',
           'cherries',
         ],
-        allergens: ['Dairy'],
         price: 4.99,
         imagePath:
           'https://www.keep-calm-and-eat-ice-cream.com/wp-content/uploads/2022/08/Ice-cream-sundae-hero-10.jpg',
@@ -274,7 +261,6 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'dessert-6',
         name: 'Creme Brulee',
         ingredients: ['Vanilla cake', 'buttercream', 'caramelized sugar'],
-        allergens: ['Dairy'],
         price: 7.99,
       },
     ],
@@ -287,7 +273,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Caesar Salad',
         price: 9.49,
         ingredients: ['Romaine', 'croutons', 'parmesan cheese'],
-        allergens: ['Dairy', 'Gluten'],
         description: 'Crisp romaine lettuce, croutons, and parmesan cheese.',
         imagePath:
           'https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg',
@@ -302,7 +287,6 @@ export const dummyMenuData: RestaurantMenu = [
           'feta cheese',
           'Greek dressing',
         ],
-        allergens: ['Dairy'],
         description: 'Mixed greens, olives, feta cheese, and Greek dressing.',
       },
       {
@@ -317,7 +301,6 @@ export const dummyMenuData: RestaurantMenu = [
           ' blue cheese',
           'avocado',
         ],
-        allergens: ['Dairy'],
         price: 11.99,
         imagePath:
           'https://hips.hearstapps.com/del.h-cdn.co/assets/18/11/1520887441-cobb-salad-delish-1.jpg',
@@ -326,7 +309,6 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'salad-4',
         name: 'Caprese Salad',
         ingredients: ['Balsamic Dressing', 'tomato', 'mozzerella'],
-        allergens: ['Dairy'],
         price: 8.99,
         imagePath:
           'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2003/9/22/0/tm1a35_caprese_salad.jpg.rend.hgtvcom.1280.720.suffix/1530799984231.jpeg',
@@ -346,7 +328,6 @@ export const dummyMenuData: RestaurantMenu = [
           'sugar',
           'garlic',
         ],
-        allergens: ['Peanuts'],
       },
     ],
   },
@@ -364,7 +345,6 @@ export const dummyMenuData: RestaurantMenu = [
           'tomato',
           'mayo',
         ],
-        allergens: ['Dairy', 'Gluten'],
         price: 11.99,
         description:
           'Triple-decker sandwich with turkey, bacon, lettuce, and tomato.',
@@ -375,7 +355,6 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'sandwich-2',
         name: 'BLT Sandwich',
         ingredients: ['White bread', 'bacon', 'lettuce', 'tomato', 'mayo'],
-        allergens: ['Dairy', 'Gluten'],
         price: 9.99,
         description: 'Classic bacon, lettuce, and tomato sandwich.',
       },
@@ -383,7 +362,6 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'sandwich-3',
         name: 'Turkey Panini',
         ingredients: ['Turkey', 'stuffing', ' cranberry sauce', 'gravy'],
-        allergens: ['Gluten'],
         price: 10.99,
         imagePath:
           'https://potatorolls.com/wp-content/uploads/2020/10/Mediterranean-Turkey-Panini1-1-960x640.jpg',
@@ -399,7 +377,6 @@ export const dummyMenuData: RestaurantMenu = [
           'cucumber',
           'edamame',
         ],
-        allergens: ['Gluten'],
         price: 8.99,
         imagePath:
           'https://tastesbetterfromscratch.com/wp-content/uploads/2014/04/Veggie-Wrap-2.jpg',
@@ -408,7 +385,6 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'sandwich-5',
         name: 'Grilled Cheese',
         ingredients: ['White bread', 'butter', 'cheddar cheese'],
-        allergens: ['Dairy', 'Gluten'],
         price: 6.99,
         imagePath:
           'https://natashaskitchen.com/wp-content/uploads/2021/08/Grilled-Cheese-Sandwich-3.jpg',
@@ -429,7 +405,6 @@ export const dummyMenuData: RestaurantMenu = [
           'butter',
           'cream',
         ],
-        allergens: ['Dairy'],
         price: 4.99,
         description: 'Homemade tomato soup with a touch of cream.',
       },
@@ -437,7 +412,6 @@ export const dummyMenuData: RestaurantMenu = [
         id: 'soup-2',
         name: 'Chicken Noodle Soup',
         ingredients: ['Chicken', 'chicken broth', 'carrots', 'celery'],
-        allergens: ['None'],
         price: 5.49,
         description: 'Hearty chicken noodle soup with vegetables.',
         imagePath:
@@ -448,7 +422,6 @@ export const dummyMenuData: RestaurantMenu = [
         name: 'Minestrone Soup',
         price: 4.99,
         ingredients: ['Pasta', 'beans', 'tomatoes', 'veggies', 'herbs'],
-        allergens: ['Gluten'],
         imagePath:
           'https://cdn.loveandlemons.com/wp-content/uploads/2021/11/minestrone-soup.jpg',
       },
@@ -465,7 +438,6 @@ export const dummyMenuData: RestaurantMenu = [
           'olive oil',
           'lentils',
         ],
-        allergens: ['None'],
         price: 4.49,
         imagePath:
           'https://veggiedesserts.com/wp-content/uploads/2021/04/lentil-soup-3-1024x1536.jpg',
@@ -482,18 +454,22 @@ export const dummyMenuData: RestaurantMenu = [
           'celery',
           'onion',
         ],
-        allergens: ['Shellfish, Dairy'],
         description: 'A thick slurry of smashed clam.',
       },
       {
         id: 'soup-6',
         name: 'Miso Soup',
         ingredients: ['Dashi stock', 'tofu', 'green onions'],
-        allergens: ['None'],
         price: 3.99,
         imagePath:
           'https://www.justonecookbook.com/wp-content/uploads/2022/06/Miso-Soup-8271-II.jpg',
       },
     ],
   },
-]
+].map((category) => ({
+  ...category,
+  items: category.items.map((item) => ({
+    ...item,
+    allergens: getRandomElements(allergiesOptions, 2, 6),
+  })),
+}))

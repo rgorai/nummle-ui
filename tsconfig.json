@@ -17,7 +17,11 @@
     "typeRoots": ["react-app-env.d.ts", "../types", "./node_modules/@types"],
     "rootDirs": ["src", "../types"],
     "types": ["node"],
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    // "paths": {
+    //   "@/*": ["./src/*"],
+    //   "@/types/*": ["./types/*"]
+    // }
   },
   "include": ["src", "types"]
 }

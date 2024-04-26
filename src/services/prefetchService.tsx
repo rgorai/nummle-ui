@@ -1,8 +1,13 @@
 import { useCallback, useEffect } from 'react'
-import { addFollowsData, selectSessionData } from '../state/sessionDataSlice'
+import {
+  addFollowsData,
+  addLoadedProfile,
+  selectSessionData,
+} from '../state/sessionDataSlice'
 import { useAppDispatch, useAppSelector } from '../state/hooks'
 import { useAuthInfo } from '../state/authContext'
 import { getUserFollows } from './followsService'
+import { getCurrUserProfile } from './userService'
 
 export const PrefetchUserFollowing = () => {
   const { authInfo } = useAuthInfo()
@@ -18,7 +23,6 @@ export const PrefetchUserFollowing = () => {
       getUserFollows(userId, 'followings')
         .then(({ data }) => {
           dispatch(addFollowsData(['followings', userId, data]))
-          // console.log('curr user following', data)
         })
         .catch(({ response }) => {
           console.error('get curr user following error', response)
@@ -38,6 +42,32 @@ export const PrefetchUserFollowing = () => {
     currUserFollowingList,
     getCurrUserFollowing,
   ])
+
+  return null
+}
+
+export const PrefetchUserProfile = () => {
+  const { authInfo } = useAuthInfo()
+  const dispatch = useAppDispatch()
+  const { loadedProfiles } = useAppSelector(selectSessionData)
+
+  const currProfile = authInfo.authenticated
+    ? loadedProfiles[authInfo.username]
+    : undefined
+
+  const getCurrUserData = useCallback(() => {
+    getCurrUserProfile()
+      .then(({ data }) => {
+        dispatch(addLoadedProfile(data))
+      })
+      .catch(({ response }) => {
+        console.error('get user profile', response)
+      })
+  }, [dispatch])
+
+  useEffect(() => {
+    if (!currProfile) getCurrUserData()
+  }, [currProfile, getCurrUserData])
 
   return null
 }

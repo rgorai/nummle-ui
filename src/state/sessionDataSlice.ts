@@ -184,4 +184,5 @@ export const {
 export const selectSessionData = (state: RootState) => state.sessionData
 
 const sessionDataReducer = sessionDataSlice.reducer
+
 export default sessionDataReducer

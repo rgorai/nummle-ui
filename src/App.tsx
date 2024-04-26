@@ -11,8 +11,11 @@ import AuthWrapper from './Wrappers/AuthWrapper'
 import Logout from './App/User/components/Logout'
 import RestaurantPage from './App/Restaurants/components/RestaurantPage'
 import NearbyRestaurants from './App/Pages/components/NearbyRestaurants'
-import { PrefetchUserFollowing } from './services/prefetchService'
 import { useAuthInfo } from './state/authContext'
+import {
+  PrefetchUserFollowing,
+  PrefetchUserProfile,
+} from './services/prefetchService'
 
 const APP_CONTENT: AppContent = [
   {
@@ -98,6 +101,7 @@ const App = () => {
   return (
     <div className="App">
       <PrefetchUserFollowing />
+      <PrefetchUserProfile />
 
       <BrowserRouter>
         <Navbar appItems={APP_CONTENT} />
