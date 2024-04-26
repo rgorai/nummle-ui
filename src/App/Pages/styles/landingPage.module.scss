@@ -1,0 +1,238 @@
+$dark-purple: #8e44ad;
+
+.intro {
+  text-align: center;
+  padding-top: 20rem;
+  // padding-left: 20%rem;
+  // padding-right: %rem;
+  padding-bottom: 20rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('../../../assets/landingPage/landingPageFoods.jpg');
+  background-size: 100rem;
+  background-position: center;
+  //background-color: #cccccc;
+}
+@media (min-width: 1800px) {
+  .intro {
+    background-size: 140rem;
+  }
+}
+
+.slogan {
+  font-size: 2.1rem;
+  height: 60px;
+  line-height: 2.25rem;
+  font-weight: bold;
+  padding-bottom: 3rem;
+  color: black;
+  //text-shadow: 1px 1px white;
+  margin-left: 15rem;
+  margin-right: 15rem;
+}
+
+@media (min-width: 1500px) {
+  .slogan {
+    padding-top: 5rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
+  }
+}
+@media (min-width: 1800px) {
+  .slogan {
+    padding-top: 5rem;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    font-size: 2.4rem;
+    line-height: 2.5rem;
+  }
+}
+
+.addressBox {
+  font-family: 'Poppins', sans-serif;
+  width: 35%;
+  margin: auto;
+  border-radius: 10px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  text-align: center;
+}
+.addressButton {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 1rem;
+  background-color: $dark-purple;
+  border: solid $dark-purple 1px;
+  border-radius: 10px;
+  margin-left: 1rem;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+
+  &:hover {
+    background-color: #6c3483;
+    transition: 0.1s ease-in-out;
+  }
+}
+@media (min-width: 1800px) {
+  .addressBox {
+    width: 25%;
+  }
+}
+.imgBoxes {
+  padding-top: 2rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  //padding-bottom: 30rem;
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+}
+
+.imgBox {
+  flex: 1;
+  //border: 1px solid black;
+  padding: 30px 30px 0px 30px;
+  margin: 30px 30px 0px 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 15rem;
+  //background: url('diet.jpg');
+}
+
+#box1 {
+  background: url('../../../assets/landingPage/diets.jpg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#box2 {
+  background: url('../../../assets/landingPage/eat.jpg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#box3 {
+  background: url('../../../assets/landingPage/allergy.jpg');
+  filter: grayscale(100%);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.underIntro {
+  //padding-top: 10rem;
+  //padding-bottom: 30rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+}
+
+.box {
+  flex: 1;
+  //border: 1px solid black;
+  line-height: 45px;
+  padding: 0px 0px 30px 0px;
+  margin: 0px 10px 30px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.boxIn {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  padding-top: 10px;
+  color: $dark-purple;
+}
+
+@media (min-width: 1800px) {
+  .imgBoxes,
+  .underIntro {
+    padding-left: 15rem;
+    padding-right: 15rem;
+  }
+  #box1 {
+    background-size: 40%;
+  }
+  #box2 {
+    background-size: 50%;
+    //scale: 75%;
+  }
+  #box3 {
+    background-size: 50%;
+  }
+}
+
+.aboutNummleContainer {
+  padding-top: 2rem;
+  padding-bottom: 7rem;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  gap: 3rem;
+  margin: 0 auto;
+}
+
+.aboutNummleTitle {
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+.aboutNummleInfo {
+  font-size: 17px;
+}
+
+.footerContainer {
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  background-color: rgb(247, 247, 247);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  //align-items: center;
+  justify-content: center;
+  gap: 20rem;
+}
+
+#footerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem 1rem 2rem;
+}
+.footerNummle {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.footerYear {
+  color: gray;
+}
+#footerRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  //padding: 1rem 2rem 1rem 2rem;
+  //align-items: left;
+}
+.footerList {
+  list-style: none;
+  //padding-bottom: 1rem;
+}
+.footerList:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: $dark-purple;
+  transition: 0.1s all ease-in-out;
+}

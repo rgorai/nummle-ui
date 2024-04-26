@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import LandingPage from './App/Main/components/LandingPage'
 import ProfilePage from './App/Pages/components/ProfilePage'
 import FeedPage from './App/Pages/components/FeedPage'
 import SignupPage from './App/Pages/components/SignupPage'
@@ -16,6 +15,7 @@ import {
   PrefetchUserFollowing,
   PrefetchUserProfile,
 } from './services/prefetchService'
+import LandingPage from './App/Pages/components/LandingPage'
 
 const APP_CONTENT: AppContent = [
   {
