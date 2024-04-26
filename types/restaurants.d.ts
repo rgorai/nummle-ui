@@ -46,16 +46,16 @@ type MenuListItem = {
  * @author rgorai
  * @description each menu category has a name for the category, and a list of {@link MenuListItem}s
  */
-type MenuCategories = {
+type MenuCategory = {
   categoryName: string
   items: MenuListItem[]
 }
 
 /**
  * @author rgorai
- * @description the schema for a restaurant's menu; it is a list of {@link MenuCategories}
+ * @description the schema for a restaurant's menu; it is a list of {@link MenuCategory}
  */
-type RestaurantMenu = MenuCategories[]
+type RestaurantMenu = MenuCategory[]
 
 type MenuItemReactions = Record<
   number,
